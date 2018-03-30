@@ -15,7 +15,7 @@ public class YangboApplication {
 
 	@RequestMapping("/")
 	public String hello(){
-		return "hello yangbo world";
+		return "hello yangbo05527 world";
 	}
 
 }
