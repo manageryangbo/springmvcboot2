@@ -14,6 +14,13 @@ public class Tomato {
     private String color;
     private Integer weight;
 
+    public Tomato() {
+    }
+
+    public Tomato(Integer weight) {
+        this.weight = weight;
+    }
+
     public String getColor() {
         return color;
     }

@@ -12,6 +12,8 @@ package com.jdk8.actionappleparameter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 public class TestApp {
     public static void main(String[] args) {
@@ -37,6 +39,9 @@ public class TestApp {
         // Lambda写法
         List<App> resultAppLambda = filter( appList ,standardApp, ( App app,App standardAppCopy ) ->  !standardAppCopy.getColor().equals( app.getColor() )   );
         System.out.println(resultAppLambda.toString());
+
+
+
     }
 
     public static List<App> filter(List<App> inventory, App standardApp, ApplePredicate p) {

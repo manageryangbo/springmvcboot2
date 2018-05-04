@@ -14,6 +14,18 @@ public class App {
     private String color;
     private Integer weight;
 
+    public App() {
+    }
+
+    public App(Integer weight) {
+        this.weight = weight;
+    }
+
+    public App(String color, Integer weight) {
+        this.color = color;
+        this.weight = weight;
+    }
+
     public String getColor() {
         return color;
     }
