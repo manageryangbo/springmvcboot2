@@ -15,6 +15,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class TestPractice {
     public static void main(String[] args) {
@@ -42,6 +43,8 @@ public class TestPractice {
         Integer maxValue = transactions.stream().map(Transaction::getValue).reduce(0, Integer::max);
         Optional<Transaction> minTransaction = transactions.stream().reduce((t1, t2) -> t1.getValue() < t2.getValue() ? t1 : t2);
         Optional<Transaction> minTransactionAgain = transactions.stream().min(Comparator.comparing(Transaction::getValue));
+
+
 
     }
 }
