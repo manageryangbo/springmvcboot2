@@ -28,7 +28,6 @@ public class ProductFactoryWithSynchronized {
                 //打日志的目的是更好的观察消费者和生产者状态
                 System.out.println("警告：线程("+Thread.currentThread().getName() + ")准备生产产品，但产品池已满");
                 wait();
-
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -52,7 +51,7 @@ public class ProductFactoryWithSynchronized {
         }
         String product = products.remove(0) ;
         System.out.println("线程("+Thread.currentThread().getName() + ")消费了一件产品:" + product+";当前剩余商品"+products.size()+"个");
-        notify();
+        notify();  //随机唤起一个线程
         return product;
     }
 }
