@@ -13,7 +13,10 @@ package com.jdk8.actionTparameter;
 import com.jdk8.actionappleparameter.App;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static java.util.Comparator.comparing;
 
@@ -25,8 +28,10 @@ public class TestT {
         Tomato tomato2 = new Tomato();tomato2.setColor("green");tomato2.setWeight(175);tomatoList.add(tomato2);
         Tomato tomato3 = new Tomato();tomato3.setColor("green");tomato3.setWeight(115);tomatoList.add(tomato3);
         Tomato tomato4 = new Tomato();tomato4.setColor("red"); tomato4.setWeight(165);tomatoList.add(tomato4);
-        tomatoList.sort( comparing( Tomato::getWeight ) ); // 方法引用
-        tomatoList.sort( comparing( Tomato::getWeight ) ); // 方法引用
+        tomatoList.sort( comparing(Tomato::getWeight).reversed() ); // 方法引用
+        List<Integer> integerList = tomatoList.stream().mapToInt(Tomato::getWeight).boxed().collect(Collectors.toList());
+        Optional<Integer> maxWeight = integerList.stream().reduce(Math::max);
+        maxWeight.ifPresent(System.out::println);
         tomatoList.sort( (Tomato t1,Tomato t2)->t1.getColor().compareToIgnoreCase( t2.getColor() ) );
 
         //传统写法(行为性参数匿名类，泛型)
@@ -41,7 +46,7 @@ public class TestT {
             }
         });
         // Lambda写法
-        List<Tomato> resultTomatoLambda = filter(tomatoList, (TPredicate<Tomato>) (Tomato   standTomato) ->  !"red".equals( standTomato.getColor() ));
+        List<Tomato> resultTomatoLambda = filter(tomatoList, (TPredicateCopy<Tomato>) (Tomato   standTomato) ->  !"red".equals( standTomato.getColor() ));
         System.out.println(  resultTomato.toString());
         System.out.println(  resultTomatoLambda.toString());
     }

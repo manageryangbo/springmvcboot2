@@ -14,10 +14,8 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.OptionalInt;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -30,11 +28,16 @@ public class TestNumber {
         toSortList.add(d1); toSortList.add(d2); toSortList.add(d3);
 
         // 数字流
+        Comparator<Integer> reversedComparator = Comparator.comparing( Integer::intValue ).reversed();
+        List<Integer> integerSortList = toSortList.stream().mapToInt(Dish::getCalories).boxed().sorted( reversedComparator ).collect(Collectors.toList());
+        System.out.println( integerSortList.toString() );
         IntStream intStream = toSortList.stream().mapToInt(Dish::getCalories);
         Stream<Integer> stream = intStream.boxed();
-        //int sum = intStream.sum(); intStream流已经被关闭，
+        stream.forEach(System.out::println);
+//        int sum2 = intStream.sum(); //intStream流已经被关闭，
         OptionalInt maxOptional = toSortList.stream().mapToInt(Dish::getCalories).max();
         int max = maxOptional.orElse(100);
+        boolean b = toSortList.stream().map(Dish::getCalories).noneMatch(i -> 100 % i == 0);
 
         // 构建流
         Stream<String> stringStream = Stream.of("java 8", "lambdas", "in", "Action"); //值创建流
@@ -52,7 +55,7 @@ public class TestNumber {
             e.printStackTrace();
         }
 
-        Stream.iterate(new int[]{0,1},t->new int[]{t[1],t[0]+t[1]}).limit(20).forEach(t-> System.out.println("("+t[0]+","+t[1]+"}"));
+        Stream.iterate(new int[]{0,1},t->new int[]{t[1],t[0]+t[1]}).limit(20).forEach(t-> System.out.println("{"+t[0]+","+t[1]+"}"));
 
 
     }

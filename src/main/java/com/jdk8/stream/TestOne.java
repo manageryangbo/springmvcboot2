@@ -34,7 +34,7 @@ public class TestOne {
         }).reversed());
         System.out.println(toSortList.toString());
 
-        List<String> lowCaloricDishName = toSortList.stream().filter(d -> d.getCalories() >= 200).sorted(comparing(Dish::getCalories)).map(d->d.getName()).collect(Collectors.toList());
+        List<String> lowCaloricDishName = toSortList.stream().filter(d -> d.getCalories() >= 200).sorted(comparing(Dish::getCalories).reversed()).map(d->d.getName()).collect(Collectors.toList());
         System.out.println(  lowCaloricDishName.toString() );
 
         Function<Dish,String> f=d->d.getName();

@@ -12,6 +12,7 @@ package com.jdk8.lambda;
 
 import com.jdk8.actionappleparameter.App;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -26,7 +27,7 @@ public class TestLambdaProperty {
     public static void main(String[] args) {
 
         List<String> list= Arrays.asList("a","c","b");
-        Comparator<String> c = (s1, s2)->s1.compareToIgnoreCase(s2);  //lambda表达式
+        Comparator<String> c = ( s1,  s2)->s1.compareToIgnoreCase(s2);  //lambda表达式
         list.sort( c );
         Comparator<String> c2 = String::compareToIgnoreCase;  // 方法引用
         list.sort( c2 );
@@ -50,10 +51,15 @@ public class TestLambdaProperty {
         System.out.println( ss.apply(app1)  );
 
         // 复合Lambda表达式
-        Comparator.comparing( (App a)->a.getWeight()).reversed();
+        List<App> appList = new ArrayList<App>();
+        App app11 = new App();app11.setColor("red");app11.setWeight(125);appList.add(app11);
+        App app2 = new App();app2.setColor("green");app2.setWeight(175);appList.add(app2);
+        App app3 = new App();app3.setColor("green");app3.setWeight(115);appList.add(app3);
+        App app4 = new App();app4.setColor("red"); app4.setWeight(165);appList.add(app4);
+        Comparator<App> reversedComparator = Comparator.comparing((App a) -> a.getWeight()).reversed();
+        appList.stream().sorted( reversedComparator );
         Function<App,Integer> f3 = (App a)->a.getWeight();
         Predicate<App> p = (App a)->a.getWeight()>150;
-
 
     }
 }
