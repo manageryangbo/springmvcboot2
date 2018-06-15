@@ -58,8 +58,9 @@ public class ParallelUtil {
 
     /**
      * 求前n项和 接收多种流处理方式( 原始迭代，序列流，并列流 )
-     *
+     *  特别关键词: Deprecated  <=>  方法"过时"
      */
+    @Deprecated
     public static  long measureSumPerf(Function<Long,Long> adder , Long n ){
         long fastest = Long.MAX_VALUE;
         for (int i = 0 ; i<10; i++){
