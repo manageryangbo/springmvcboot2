@@ -15,6 +15,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.concurrent.atomic.LongAdder;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -26,6 +27,11 @@ public class TestNumber {
         Dish d2 = new Dish();d2.setCalories(100);d2.setName("dish1");
         Dish d3 = new Dish();d3.setCalories(300);d3.setName("dish3");
         toSortList.add(d1); toSortList.add(d2); toSortList.add(d3);
+
+        toSortList.stream().collect(  Collectors.reducing( 0,Dish::getCalories,Integer::sum  ) );
+        Optional<Integer> reduceSum = toSortList.stream().mapToInt(Dish::getCalories).boxed().collect(Collectors.reducing( Integer::sum));
+        int streamSum = toSortList.stream().mapToInt(Dish::getCalories).sum();
+        System.out.println( reduceSum.orElse(0) + " <=> " + streamSum );
 
         // 数字流
         Comparator<Integer> reversedComparator = Comparator.comparing( Integer::intValue ).reversed();
@@ -55,7 +61,9 @@ public class TestNumber {
             e.printStackTrace();
         }
 
+        // 拓展
         Stream.iterate(new int[]{0,1},t->new int[]{t[1],t[0]+t[1]}).limit(20).forEach(t-> System.out.println("{"+t[0]+","+t[1]+"}"));
+
 
 
     }

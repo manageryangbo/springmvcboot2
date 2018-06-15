@@ -14,6 +14,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import static java.util.stream.Collectors.summingInt;
+
 public class testCollector {
     public enum CaloricLevel { DIET , NORMAL , FAT }
 
@@ -44,7 +46,7 @@ public class testCollector {
         Optional<Dish> maxStream = toSortList.stream().reduce((ddd1, ddd2) -> ddd1.getCalories() > ddd2.getCalories() ? ddd1 : ddd2);
 
         // 总和
-        Integer summingInt = toSortList.stream().collect(Collectors.summingInt(Dish::getCalories));
+        Integer summingInt = toSortList.stream().collect(summingInt(Dish::getCalories));
         System.out.println( summingInt );
 
         // 收集器
@@ -90,5 +92,14 @@ public class testCollector {
         List<Dish> notVagetarianMap = toSortList.stream().filter(dishsh -> !dishsh.isVegetarian()).collect(Collectors.toList());
         System.out.println(  notVagetarianMap );
 
+
+        Integer caloriesBinaryOperatorTTT = toSortList.stream().map(Dish::getCalories).reduce(0, (a, b) -> a + b);
+        // lambda -> 引用
+        Integer caloriesSummingInt = toSortList.stream().collect(summingInt(Dish::getCalories));
+
+
+
+
     }
 }
+

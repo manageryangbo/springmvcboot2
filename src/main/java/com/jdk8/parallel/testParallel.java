@@ -10,8 +10,10 @@
  */
 package com.jdk8.parallel;
 
-import java.util.Calendar;
-import java.util.Date;
+import com.jdk8.actionappleparameter.App;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class testParallel {
     public static void main(String[] args) {
@@ -30,8 +32,29 @@ public class testParallel {
          * 3 rangedClosed(1,n)解决了拆箱和不能分块的问题
          */
 
-        
+        Long count = 10000L ;
+        TPredicate<String> tPredicateInner = new TPredicate<String>() {
+            @Override
+            public boolean effect(String s) {
+                Long count = 1000000L ;
+                System.out.println( "inner count:" + count );
+                System.out.println( ParallelUtil.measureSumPerf(ParallelUtil::parallelSum, count) );
+                return s.contains("s");
+            }
+        };
+        tPredicateInner.effect("ssss");
+        TPredicate<String> tPredicateLambda = (String s) -> {
 
+            System.out.println( "lambda count:" + count );
+            System.out.println( ParallelUtil.measureSumPerf(ParallelUtil::parallelSum, count) );
+            return s.contains("d");
+        };
+        tPredicateLambda.effect("ssss");
+        /**
+         * 总结:
+         *      匿名内部类可以重新定义变量，Lambda表达式则不行
+         *      匿名内部类不重新定义变量时使用全局的值，否则使用内部类的值
+         */
 
 
     }
