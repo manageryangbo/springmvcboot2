@@ -10,14 +10,18 @@
  */
 package com.jdk8.apply;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class TestDome {
 
     public static void main(String[] args) {
         List<String> list = new ArrayList<>();
-
+        BigDecimal bd2 = new BigDecimal("1.1");
+        double d = 1.1;
+        BigDecimal bd1 = BigDecimal.valueOf(d);
+        int i = 42;
+        double d1 = Double.longBitsToDouble(i);
     }
 }

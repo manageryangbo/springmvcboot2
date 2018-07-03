@@ -13,6 +13,7 @@ package com.jdk8.stream;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.summingInt;
 
@@ -39,12 +40,11 @@ public class testCollector {
         System.out.println(count);
         // 查找最大值和最小值
         Comparator<Dish> comparing = Comparator.comparing(Dish::getCalories);
-        Optional<Dish> maxCollect = toSortList.stream().collect(Collectors.maxBy(comparing));
+        Optional<Dish> maxCollect = toSortList.stream().collect(Collectors.maxBy(Comparator.comparing(Dish::getCalories)));
         Dish dish = maxCollect.orElse(null);
         System.out.println(  dish.getCalories() );
         Optional<Dish> maxCollect1 = toSortList.stream().collect(Collectors.reducing((dd1, dd2) -> dd1.getCalories() > dd2.getCalories() ? dd1 : dd2));
         Optional<Dish> maxStream = toSortList.stream().reduce((ddd1, ddd2) -> ddd1.getCalories() > ddd2.getCalories() ? ddd1 : ddd2);
-
         // 总和
         Integer summingInt = toSortList.stream().collect(summingInt(Dish::getCalories));
         System.out.println( summingInt );
@@ -76,6 +76,7 @@ public class testCollector {
             else if (dishes.getCalories() >= 200) return CaloricLevel.NORMAL;
             else return CaloricLevel.DIET;
         }));
+
         System.out.println( "dishCaloricLevelByGroup:" +  dishCaloricLevelByGroup.toString() );
         Map<Dish.Type, Optional<Dish>> maxCollectOptionDish = toSortList.stream().collect(Collectors.groupingBy(Dish::getType, Collectors.maxBy(Comparator.comparingInt(Dish::getCalories))));  // 分组下的最大值
         Map<Dish.Type, Dish> maxCollectDish= toSortList.stream().collect(Collectors.groupingBy(Dish::getType, Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparingInt(Dish::getCalories)), Optional::get)));
@@ -97,8 +98,11 @@ public class testCollector {
         // lambda -> 引用
         Integer caloriesSummingInt = toSortList.stream().collect(summingInt(Dish::getCalories));
 
-
-
+        List<Integer> zoneList=new ArrayList<Integer>();
+        zoneList.add(5);
+        zoneList.add(4);
+        zoneList.add(6);
+        List<Integer> sortZoneList = zoneList.stream().sorted(Comparator.comparing(Integer::intValue).reversed()).collect(Collectors.toList());
 
     }
 }
