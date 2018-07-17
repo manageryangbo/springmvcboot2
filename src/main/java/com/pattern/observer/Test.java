@@ -32,5 +32,10 @@ public class Test {
             }
         } );
         f.notifyObserver("china of province or city listen to news!");
+        demo();
+    }
+
+    private static void demo(){
+        System.out.println("demo");
     }
 }
