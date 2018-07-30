@@ -23,6 +23,7 @@ import java.util.function.*;
 
 public class TestReader {
     public static void main(String[] args) throws Exception {
+
         BufferedReader brf = new BufferedReader(new FileReader("E://data.txt"));
         int printNumber = 1213 ;
         BufferedReaderProcessor brp = brf2 ->{
