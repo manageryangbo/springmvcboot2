@@ -18,5 +18,6 @@ public class SingleTest {
 //        EnumSingleton.uniqueInstance.singletonOperation();  // 枚举的单例模式
         System.out.println("分支1 打印");
         System.out.println("分支2 打印");
+        System.out.println("分支3 打印");
     }
 }
