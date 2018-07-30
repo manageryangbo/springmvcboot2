@@ -16,6 +16,6 @@ import java.util.stream.Collectors;
 public class SingleTest {
     public static void main(String[] args) {
 //        EnumSingleton.uniqueInstance.singletonOperation();  // 枚举的单例模式
-
+        System.out.println("分支1 打印");
     }
 }
