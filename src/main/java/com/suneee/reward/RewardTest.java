@@ -22,7 +22,6 @@ public class RewardTest {
     }
 
     public static void ruanTimeTest(){
-
         long start = System.currentTimeMillis();
         List<RewardItem> rewardItemList=new ArrayList<RewardItem>();
         RewardItem rewardItem1=new RewardItem();
