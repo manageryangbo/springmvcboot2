@@ -17,9 +17,7 @@ import java.util.stream.Collectors;
 
 public class RewardTest {
     public static void main(String[] args) {
-        
         ruanTimeTest();
-
     }
 
     public static void ruanTimeTest(){
