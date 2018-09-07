@@ -50,7 +50,7 @@ public class CountDownLatchDemo {
     }
 
 
-    private static CountDownLatch latch = new CountDownLatch(2);
+    private static CountDownLatch latch = new CountDownLatch(2);  // (countDown调用次数,await才继续执行)
 
     public static void main(String[] args) throws InterruptedException {
 

@@ -28,7 +28,7 @@ public class LearnCompleteFuture {
         useFuture();
         TimeUnit.SECONDS.sleep(10);
         System.out.println("=======================");
-        useCompletableFuture();
+//        useCompletableFuture();
     }
 
     private static void useFuture() throws InterruptedException, ExecutionException {
