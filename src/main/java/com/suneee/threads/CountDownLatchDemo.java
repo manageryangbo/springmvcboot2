@@ -12,6 +12,7 @@
 package com.suneee.threads;
 
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ForkJoinTask;
 
 public class CountDownLatchDemo {
     /**
@@ -112,7 +113,7 @@ public class CountDownLatchDemo {
                 latch.countDown();
             };
         }.start();
-
-
+//        latch.countDown();
+        System.out.println("=======结束========");
     }
 }
