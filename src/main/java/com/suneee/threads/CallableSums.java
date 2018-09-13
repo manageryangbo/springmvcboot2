@@ -41,14 +41,15 @@ public class CallableSums {
     }
 
     public static void main(String[] args) throws Exception {
-        ExecutorService executor = Executors.newFixedThreadPool(3);
+//        ExecutorService executor = Executors.newFixedThreadPool(3);
+        ExecutorService executor = Executors.newCachedThreadPool();
         List<Future<Long>> results = executor.invokeAll(Arrays.asList(
-                new CallableSum(0, 10), new CallableSum(0, 1_000), new CallableSum(0, 1_000_000)
+                new CallableSum(0, 10), new CallableSum(0, 1_000), new CallableSum(0, 1_000_000), new CallableSum(0, 1_000_100)
         ));
         executor.shutdown();
 
         for (Future<Long> result : results) {
-            System.out.println("for .... ");
+            System.out.print("for .... ");
             System.out.println(result.get());
         }
 
