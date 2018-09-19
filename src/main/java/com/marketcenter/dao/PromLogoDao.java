@@ -2,7 +2,7 @@ package com.marketcenter.dao;
 
 import com.marketcenter.dbo.PromLogo;
 
-public interface PromLogoMapper {
+public interface PromLogoDao {
     int deleteByPrimaryKey(Integer promLogoId);
 
     int insert(PromLogo record);
