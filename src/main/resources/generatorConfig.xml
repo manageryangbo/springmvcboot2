@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD 
+
+ MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <!-- 数据库包 -->
+	<classPathEntry location="C:\Users\martin\.m2\repository\org\postgresql\postgresql\9.4-1203-jdbc42\postgresql-9.4-1203-jdbc42.jar" />
+		
+	<context id="context1">
+
+		<commentGenerator> 
+			<property name="suppressAllComments" value="true" /><!-- 是否取消注释 -->
+			<property name="suppressDate" value="true" /> <!-- 是否生成注释代时间戳 -->
+		</commentGenerator>
+
+		<!-- <jdbcConnection driverClass="org.postgresql.Driver"
+			connectionURL="jdbc:postgresql://172.16.36.70:5432/vr-marketingcenter"
+			userId="postgres" password="123456" />  -->
+
+        <jdbcConnection driverClass="org.postgresql.Driver"
+            connectionURL="jdbc:postgresql://172.19.6.150:5432/vr-marketingcenter"
+            userId="postgres" password="suneeedba" />
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!--生成PO类的位置 -->
+		<javaModelGenerator
+			targetPackage="com.marketcenter.dbo"
+			targetProject="src/main/java">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+		</javaModelGenerator>
+
+		<!-- mapper映射文件生成的位置 -->
+		<sqlMapGenerator targetPackage="com.marketcenter.dao"
+			targetProject="src/main/java">
+			<!--是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+
+		<!--mapper接口生成的位置 -->
+		<javaClientGenerator targetPackage="com.marketcenter.dao"
+			targetProject="src/main/java" type="XMLMAPPER">
+			<!--是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+
+		<!-- 指定数据库表 -->
+		<table tableName="t_prom_logo" domainObjectName="PromLogo"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false"></table>
+	</context>
+</generatorConfiguration>
