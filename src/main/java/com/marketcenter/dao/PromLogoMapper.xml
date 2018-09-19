@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.marketcenter.dao.PromLogoMapper" >
+  <resultMap id="BaseResultMap" type="com.marketcenter.dbo.PromLogo" >
+    <id column="prom_logo_id" property="promLogoId" jdbcType="INTEGER" />
+    <result column="prom_id" property="promId" jdbcType="INTEGER" />
+    <result column="logo_flag" property="logoFlag" jdbcType="SMALLINT" />
+    <result column="image_path" property="imagePath" jdbcType="VARCHAR" />
+    <result column="image_position" property="imagePosition" jdbcType="VARCHAR" />
+    <result column="text_title" property="textTitle" jdbcType="VARCHAR" />
+    <result column="text_color" property="textColor" jdbcType="VARCHAR" />
+    <result column="text_back_color" property="textBackColor" jdbcType="VARCHAR" />
+    <result column="text_flag" property="textFlag" jdbcType="SMALLINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    prom_logo_id, prom_id, logo_flag, image_path, image_position, text_title, text_color, 
+    text_back_color, text_flag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_prom_logo
+    where prom_logo_id = #{promLogoId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_prom_logo
+    where prom_logo_id = #{promLogoId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.marketcenter.dbo.PromLogo" >
+    insert into t_prom_logo (prom_logo_id, prom_id, logo_flag, 
+      image_path, image_position, text_title, 
+      text_color, text_back_color, text_flag
+      )
+    values (#{promLogoId,jdbcType=INTEGER}, #{promId,jdbcType=INTEGER}, #{logoFlag,jdbcType=SMALLINT}, 
+      #{imagePath,jdbcType=VARCHAR}, #{imagePosition,jdbcType=VARCHAR}, #{textTitle,jdbcType=VARCHAR}, 
+      #{textColor,jdbcType=VARCHAR}, #{textBackColor,jdbcType=VARCHAR}, #{textFlag,jdbcType=SMALLINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.marketcenter.dbo.PromLogo" >
+    insert into t_prom_logo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="promLogoId != null" >
+        prom_logo_id,
+      </if>
+      <if test="promId != null" >
+        prom_id,
+      </if>
+      <if test="logoFlag != null" >
+        logo_flag,
+      </if>
+      <if test="imagePath != null" >
+        image_path,
+      </if>
+      <if test="imagePosition != null" >
+        image_position,
+      </if>
+      <if test="textTitle != null" >
+        text_title,
+      </if>
+      <if test="textColor != null" >
+        text_color,
+      </if>
+      <if test="textBackColor != null" >
+        text_back_color,
+      </if>
+      <if test="textFlag != null" >
+        text_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="promLogoId != null" >
+        #{promLogoId,jdbcType=INTEGER},
+      </if>
+      <if test="promId != null" >
+        #{promId,jdbcType=INTEGER},
+      </if>
+      <if test="logoFlag != null" >
+        #{logoFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="imagePath != null" >
+        #{imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="imagePosition != null" >
+        #{imagePosition,jdbcType=VARCHAR},
+      </if>
+      <if test="textTitle != null" >
+        #{textTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="textColor != null" >
+        #{textColor,jdbcType=VARCHAR},
+      </if>
+      <if test="textBackColor != null" >
+        #{textBackColor,jdbcType=VARCHAR},
+      </if>
+      <if test="textFlag != null" >
+        #{textFlag,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.marketcenter.dbo.PromLogo" >
+    update t_prom_logo
+    <set >
+      <if test="promId != null" >
+        prom_id = #{promId,jdbcType=INTEGER},
+      </if>
+      <if test="logoFlag != null" >
+        logo_flag = #{logoFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="imagePath != null" >
+        image_path = #{imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="imagePosition != null" >
+        image_position = #{imagePosition,jdbcType=VARCHAR},
+      </if>
+      <if test="textTitle != null" >
+        text_title = #{textTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="textColor != null" >
+        text_color = #{textColor,jdbcType=VARCHAR},
+      </if>
+      <if test="textBackColor != null" >
+        text_back_color = #{textBackColor,jdbcType=VARCHAR},
+      </if>
+      <if test="textFlag != null" >
+        text_flag = #{textFlag,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where prom_logo_id = #{promLogoId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.marketcenter.dbo.PromLogo" >
+    update t_prom_logo
+    set prom_id = #{promId,jdbcType=INTEGER},
+      logo_flag = #{logoFlag,jdbcType=SMALLINT},
+      image_path = #{imagePath,jdbcType=VARCHAR},
+      image_position = #{imagePosition,jdbcType=VARCHAR},
+      text_title = #{textTitle,jdbcType=VARCHAR},
+      text_color = #{textColor,jdbcType=VARCHAR},
+      text_back_color = #{textBackColor,jdbcType=VARCHAR},
+      text_flag = #{textFlag,jdbcType=SMALLINT}
+    where prom_logo_id = #{promLogoId,jdbcType=INTEGER}
+  </update>
+</mapper>
