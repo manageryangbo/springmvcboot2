@@ -1,0 +1,1188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.suneee.marketingcenter.marketingcenter.dao.PromotionalDao" >
+  <resultMap id="BaseResultMap" type="com.suneee.marketingcenter.marketingcenter.model.dbo.Promotional" >
+    <id column="prom_id" property="promId" jdbcType="VARCHAR" />
+    <result column="enterprise_code" property="enterpriseCode" jdbcType="VARCHAR" />
+    <result column="activity_name" property="activityName" jdbcType="VARCHAR" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="vip_level" property="vipLevel" jdbcType="VARCHAR" />
+    <result column="use_platform" property="usePlatform" jdbcType="VARCHAR" />
+    <result column="sale_type" property="saleType" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="full_condition" property="fullCondition" jdbcType="SMALLINT" />
+    <result column="batch_special_price" property="batchSpecialPrice" jdbcType="NUMERIC" />
+    <result column="batch_reduce_price" property="batchReducePrice" jdbcType="NUMERIC" />
+    <result column="full_element" property="fullElement" jdbcType="NUMERIC" />
+    <result column="each_full_money" property="eachFullMoney" jdbcType="NUMERIC" />
+    <result column="limits" property="limits" jdbcType="SMALLINT" />
+    <result column="each_single" property="eachSingle" jdbcType="INTEGER" />
+    <result column="minus_money" property="minusMoney" jdbcType="NUMERIC" />
+    <result column="change_buy_limit" property="changeBuyLimit" jdbcType="INTEGER" />
+    <result column="touching_user" property="touchingUser" jdbcType="VARCHAR" />
+    <result column="touching_time" property="touchingTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_user" property="auditorUser" jdbcType="VARCHAR" />
+    <result column="auditor_time" property="auditorTime" jdbcType="TIMESTAMP" />
+    <result column="releases" property="releases" jdbcType="SMALLINT" />
+    <result column="release_time" property="releaseTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_status" property="auditorStatus" jdbcType="SMALLINT" />
+    <result column="pref_range" property="prefRange" jdbcType="SMALLINT" />
+    <result column="pref_way" property="prefWay" jdbcType="SMALLINT" />
+    <result column="each_full_num" property="eachFullNum" jdbcType="INTEGER" />
+    <result column="minus_num" property="minusNum" jdbcType="INTEGER" />
+    <result column="activity_code" property="activityCode" jdbcType="VARCHAR" />
+    <result column="deleted" property="deleted" jdbcType="SMALLINT" />
+    <result column="batch_type" property="batchType" jdbcType="SMALLINT" />
+    <result column="minus_sale" property="minusSale" jdbcType="NUMERIC" />
+    <result column="minus_type" property="minusType" jdbcType="SMALLINT" />
+    <result column="limit_quota_price" property="limitQuotaPrice" jdbcType="NUMERIC" />
+    <result column="batch_discount" property="batchDiscount" jdbcType="NUMERIC" />
+    <result column="discount" property="discount" jdbcType="NUMERIC" />
+    <result column="audit_opinion" property="auditOpinion" jdbcType="VARCHAR" />
+    <result column="enterprise_id" property="enterpriseId" jdbcType="INTEGER" />
+    <result column="time_limit_status" property="timeLimitStatus" jdbcType="SMALLINT" />
+    <result column="time_limit_start" property="timeLimitStart" jdbcType="TIME" />
+    <result column="time_limit_end" property="timeLimitEnd" jdbcType="TIME" />
+    <result column="store_id" property="storeId" jdbcType="INTEGER" />
+    <result column="store_code" property="storeCode" jdbcType="VARCHAR" />
+    <result column="each_piece_money" property="eachPieceMoney" jdbcType="NUMERIC" />
+    <result column="the_pieces_discount" property="thePiecesDiscount" jdbcType="NUMERIC" />
+    <result column="slogan" property="slogan" jdbcType="VARCHAR" />
+    <result column="priority" property="priority" jdbcType="INTEGER" />
+    <result column="total_limit" property="totalLimit" jdbcType="SMALLINT" />
+    <result column="daily_limit" property="dailyLimit" jdbcType="SMALLINT" />
+    <result column="people_limit" property="peopleLimit" jdbcType="SMALLINT" />
+    <result column="daily_people_limit" property="dailyPeopleLimit" jdbcType="SMALLINT" />
+  </resultMap>
+
+  <resultMap id="GoodsInPromotionalResultMap" type="com.suneee.marketingcenter.marketingcenter.model.vo.GoodsInPromotional">
+    <result column="goods_goods_code" property="goodsCode" jdbcType="VARCHAR" />
+    <collection property="promotionalVOS" ofType="com.suneee.marketingcenter.marketingcenter.model.vo.PromotionalVO"
+                resultMap="PromotionalVOResultMap"/>
+  </resultMap>
+
+    <resultMap id="PromotionalVOResultMap" type="com.suneee.marketingcenter.marketingcenter.model.vo.PromotionalVO">
+        <id column="prom_id" property="promId" jdbcType="VARCHAR"/>
+        <result column="enterprise_code" property="enterpriseCode" jdbcType="VARCHAR"/>
+        <result column="activity_name" property="activityName" jdbcType="VARCHAR"/>
+        <result column="start_time" property="startTime" jdbcType="TIMESTAMP" javaType="string"/>
+        <result column="end_time" property="endTime" jdbcType="TIMESTAMP" javaType="string"/>
+        <result column="vip_level" property="vipLevel" jdbcType="VARCHAR"/>
+        <result column="use_platform" property="usePlatform" jdbcType="VARCHAR"/>
+        <result column="sale_type" property="saleType" jdbcType="VARCHAR"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+        <result column="full_condition" property="fullCondition" jdbcType="SMALLINT"/>
+        <result column="batch_special_price" property="batchSpecialPrice" jdbcType="NUMERIC"/>
+        <result column="batch_reduce_price" property="batchReducePrice" jdbcType="NUMERIC"/>
+        <result column="full_element" property="fullElement" jdbcType="NUMERIC"/>
+        <result column="each_full_money" property="eachFullMoney" jdbcType="NUMERIC"/>
+        <result column="limits" property="limits" jdbcType="SMALLINT"/>
+        <result column="each_single" property="eachSingle" jdbcType="INTEGER"/>
+        <result column="minus_money" property="minusMoney" jdbcType="NUMERIC"/>
+        <result column="change_buy_limit" property="changeBuyLimit" jdbcType="INTEGER"/>
+        <result column="touching_user" property="touchingUser" jdbcType="VARCHAR"/>
+        <result column="touching_time" property="touchingTime" jdbcType="TIMESTAMP" javaType="string"/>
+        <result column="auditor_user" property="auditorUser" jdbcType="VARCHAR"/>
+        <result column="auditor_time" property="auditorTime" jdbcType="TIMESTAMP"/>
+        <result column="releases" property="releases" jdbcType="SMALLINT"/>
+        <result column="release_time" property="releaseTime" jdbcType="TIMESTAMP" javaType="string"/>
+        <result column="auditor_status" property="auditorStatus" jdbcType="SMALLINT"/>
+        <result column="pref_range" property="prefRange" jdbcType="SMALLINT"/>
+        <result column="pref_way" property="prefWay" jdbcType="SMALLINT"/>
+        <result column="each_full_num" property="eachFullNum" jdbcType="INTEGER"/>
+        <result column="minus_num" property="minusNum" jdbcType="INTEGER"/>
+        <result column="activity_code" property="activityCode" jdbcType="VARCHAR"/>
+        <result column="deleted" property="deleted" jdbcType="SMALLINT"/>
+        <result column="batch_type" property="batchType" jdbcType="SMALLINT"/>
+        <result column="minus_sale" property="minusSale" jdbcType="NUMERIC"/>
+        <result column="minus_type" property="minusType" jdbcType="SMALLINT"/>
+        <result column="limit_quota_price" property="limitQuotaPrice" jdbcType="NUMERIC"/>
+        <result column="batch_discount" property="batchDiscount" jdbcType="NUMERIC"/>
+        <result column="discount" property="discount" jdbcType="NUMERIC"/>
+        <result column="audit_opinion" property="auditOpinion" jdbcType="VARCHAR"/>
+        <result column="enterprise_id" property="enterpriseId" jdbcType="INTEGER"/>
+        <result column="time_limit_status" property="timeLimitStatus" jdbcType="SMALLINT"/>
+        <result column="time_limit_start" property="timeLimitStart" jdbcType="TIME" javaType="string"/>
+        <result column="time_limit_end" property="timeLimitEnd" jdbcType="TIME" javaType="string"/>
+        <result column="store_id" property="storeId" jdbcType="INTEGER"/>
+        <result column="store_code" property="storeCode" jdbcType="VARCHAR"/>
+        <result column="each_piece_money" property="eachPieceMoney" jdbcType="NUMERIC"/>
+        <result column="the_pieces_discount" property="thePiecesDiscount" jdbcType="NUMERIC"/>
+        <result column="slogan" property="slogan" jdbcType="VARCHAR"/>
+        <result column="priority" property="priority" jdbcType="INTEGER"/>
+        <result column="total_limit" property="totalLimit" jdbcType="SMALLINT"/>
+        <result column="daily_limit" property="dailyLimit" jdbcType="SMALLINT"/>
+        <result column="people_limit" property="peopleLimit" jdbcType="SMALLINT"/>
+        <result column="daily_people_limit" property="dailyPeopleLimit" jdbcType="SMALLINT"/>
+
+        <association property="promotionalLogo"
+                     javaType="com.suneee.marketingcenter.marketingcenter.model.dbo.PromotionalLogo"
+                     resultMap="PromotionalLogoResultMap"/>
+
+        <collection property="promotionalGoodsList"
+                    ofType="com.suneee.marketingcenter.marketingcenter.model.dbo.PromotionalGoods"
+                    resultMap="PromotionalGoodsResultMap"/>
+
+        <collection property="promotionalTradeList"
+                    ofType="com.suneee.marketingcenter.marketingcenter.model.dbo.PromotionalTrade"
+                    resultMap="PromotionalTradeResultMap"/>
+
+        <discriminator javaType="int" column="pref_way">
+            <case value="3" resultType="com.suneee.marketingcenter.marketingcenter.model.vo.PromotionalVO">
+                <collection property="promotionalLadderList"
+                            ofType="com.suneee.marketingcenter.marketingcenter.model.vo.PromotionalLadderVO"
+                            resultMap="PromotionalLadderResultMap">
+                </collection>
+            </case>
+        </discriminator>
+    </resultMap>
+  
+
+  <resultMap id="PromotionalLadderResultMap" type="com.suneee.marketingcenter.marketingcenter.model.vo.PromotionalLadderVO" >
+    <id column="prom_ladder_id" property="promLadderId" jdbcType="VARCHAR" />
+    <result column="prom_id" property="promId" jdbcType="VARCHAR" />
+    <result column="ladder_full" property="ladderFull" jdbcType="NUMERIC" />
+    <result column="ladder_trade_limit" property="tradeLimit" jdbcType="SMALLINT" />
+    <result column="ladder_minus_type" property="minusType" jdbcType="SMALLINT" />
+    <result column="ladder_minus_sale" property="minusSale" jdbcType="NUMERIC" />
+    <result column="ladder_minus_num" property="minusNum" jdbcType="INTEGER" />
+    <result column="ladder_minus_ladder_full" property="minusLadderFull" jdbcType="INTEGER" />
+    <result column="ladder_discount" property="discount" jdbcType="NUMERIC" />
+    <result column="ladder_each_piece_money" property="eachPieceMoney" jdbcType="NUMERIC" />
+    <result column="ladder_the_pieces_discount" property="thePiecesDiscount" jdbcType="NUMERIC" />
+    <result column="ladder_minus_money" property="minusMoney" jdbcType="NUMERIC" />
+    <discriminator javaType="string" column="sale_type">
+        <case value="tradeCoupons" resultType="com.suneee.marketingcenter.marketingcenter.model.vo.PromotionalLadderVO">
+          <collection property="promotionalTrades" ofType="com.suneee.marketingcenter.marketingcenter.model.dbo.PromotionalTrade"
+                      resultMap="Promotional_Ladder_Trade_ResultMap"/>
+        </case>
+    </discriminator>
+  </resultMap>
+
+  <resultMap id="PromotionalGoodsResultMap"
+             type="com.suneee.marketingcenter.marketingcenter.model.vo.PromotionalGoodsVO">
+    <id column="prom_goods_id" property="promGoodsId" jdbcType="VARCHAR"  />
+    <result column="prom_id" property="promId" jdbcType="VARCHAR" />
+    <result column="goods_coupon_id" property="couponId" jdbcType="INTEGER" />
+    <result column="goods_goods_code" property="goodsCode" jdbcType="VARCHAR" />
+    <result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
+    <result column="exclude" property="exclude" jdbcType="SMALLINT" />
+    <result column="goods_prom_price" property="goodsPromPrice" jdbcType="NUMERIC" />
+    <result column="goods_prom_stock" property="goodsPromStock" jdbcType="NUMERIC" />
+    <result column="goods_vip_price" property="goodsVipPrice" jdbcType="NUMERIC" />
+    <result column="gift_code" property="giftCode" jdbcType="VARCHAR" />
+    <result column="gift_name" property="giftName" jdbcType="VARCHAR" />
+    <result column="limit_goods_code" property="limitGoodsCode" jdbcType="VARCHAR" />
+    <result column="limit_goods_type" property="limitGoodsType" jdbcType="SMALLINT" />
+    <result column="goods_person_stock" property="goodsPersonStock" jdbcType="NUMERIC" />
+    <result column="goods_day_stock" property="goodsDayStock" jdbcType="NUMERIC" />
+    <result column="goods_person_day_stock" property="goodsPersonDayStock" jdbcType="NUMERIC" />
+    <result column="goods_each_full_num" property="eachFullNum" jdbcType="SMALLINT" />
+  </resultMap>
+
+  <resultMap id="PromotionalTradeResultMap" type="com.suneee.marketingcenter.marketingcenter.model.dbo.PromotionalTrade">
+    <id column="trade_id" property="tradeId" jdbcType="VARCHAR" />
+    <result column="trade_prom_id" property="promId" jdbcType="VARCHAR" />
+    <result column="trade_coupon_id" property="couponId" jdbcType="INTEGER" />
+    <result column="trade_goods_code" property="goodsCode" jdbcType="VARCHAR" />
+    <result column="trade_prices" property="tradePrices" jdbcType="NUMERIC" />
+    <result column="trade_total" property="tradeTotal" jdbcType="SMALLINT" />
+    <result column="person_order_limit" property="personOrderLimit" jdbcType="SMALLINT" />
+    <result column="trade_coupon_code" property="couponCode" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <resultMap id="Promotional_Ladder_Trade_ResultMap" type="com.suneee.marketingcenter.marketingcenter.model.dbo.PromotionalTrade">
+    <id column="ladder_trade_id" property="tradeId" jdbcType="VARCHAR" />
+    <result column="prom_ladder_id" property="promLadderId" jdbcType="VARCHAR" />
+    <result column="ladder_coupon_id" property="couponId" jdbcType="INTEGER" />
+    <result column="ladder_goods_code" property="goodsCode" jdbcType="VARCHAR" />
+    <result column="ladder_trade_prices" property="tradePrices" jdbcType="NUMERIC" />
+    <result column="ladder_trade_total" property="tradeTotal" jdbcType="SMALLINT" />
+    <result column="ladder_person_order_limit" property="personOrderLimit" jdbcType="SMALLINT" />
+    <result column="ladder_coupon_code" property="couponCode" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <resultMap id="PromotionalLogoResultMap" type="com.suneee.marketingcenter.marketingcenter.model.dbo.PromotionalLogo" >
+    <id column="prom_logo_id" property="promLogoId" jdbcType="VARCHAR" />
+    <result column="logo_prom_id" property="promId" jdbcType="VARCHAR" />
+    <result column="logo_flag" property="logoFlag" jdbcType="SMALLINT" />
+    <result column="image_path" property="imagePath" jdbcType="VARCHAR" />
+    <result column="image_position" property="imagePosition" jdbcType="VARCHAR" />
+    <result column="text_title" property="textTitle" jdbcType="VARCHAR" />
+    <result column="text_color" property="textColor" jdbcType="VARCHAR" />
+    <result column="text_back_color" property="textBackColor" jdbcType="VARCHAR" />
+    <result column="text_flag" property="textFlag" jdbcType="SMALLINT" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    prom_id, enterprise_code, activity_name, start_time, end_time, vip_level, use_platform, 
+    sale_type, remark, full_condition, batch_special_price, batch_reduce_price, full_element, 
+    each_full_money, limits, each_single, minus_money, change_buy_limit, touching_user, 
+    touching_time, auditor_user, auditor_time, releases, release_time, auditor_status, 
+    pref_range, pref_way, each_full_num, minus_num, activity_code, deleted, batch_type, 
+    minus_sale, minus_type, limit_quota_price, batch_discount, discount, audit_opinion, 
+    enterprise_id, time_limit_status, time_limit_start, time_limit_end, store_id, store_code, 
+    each_piece_money, the_pieces_discount, slogan, priority, total_limit, daily_limit, 
+    people_limit, daily_people_limit
+  </sql>
+
+<!--首页活动展示-->
+  <sql id="Promotional_Home_Page_List">
+    prom_id, activity_name,activity_code,
+    to_char(start_time, 'YYYY-MM-DD HH24:MI:SS') as start_time,
+    to_char(end_time, 'YYYY-MM-DD HH24:MI:SS') as end_time,
+    touching_user,
+    to_char(touching_time, 'YYYY-MM-DD HH24:MI:SS') as touching_time,
+    auditor_user,
+    to_char(auditor_time, 'YYYY-MM-DD HH24:MI:SS') as auditor_time,
+    to_char(release_time, 'YYYY-MM-DD HH24:MI:SS') as release_time,
+    auditor_status
+  </sql>
+
+
+  <!--查询完整的一个活动-->
+  <sql id="Promotional_Detail">
+    promotional.prom_id,
+    promotional.enterprise_code,
+    promotional.activity_name,
+    promotional.start_time,
+    promotional.end_time,
+    promotional.vip_level,
+    promotional.use_platform,
+    promotional.sale_type,
+    promotional.remark,
+    promotional.full_condition,
+    promotional.batch_special_price,
+    promotional.batch_reduce_price,
+    promotional.full_element,
+    promotional.each_full_money,
+    promotional.limits,
+    promotional.each_single,
+    promotional.minus_money,
+    promotional.change_buy_limit,
+    promotional.touching_user,
+    promotional.touching_time,
+    promotional.auditor_user,
+    promotional.auditor_time,
+    promotional.releases,
+    promotional.release_time,
+    promotional.auditor_status,
+    promotional.pref_range,
+    promotional.pref_way,
+    promotional.each_full_num,
+    promotional.minus_num,
+    promotional.activity_code,
+    promotional.deleted,
+    promotional.batch_type,
+    promotional.minus_sale,
+    promotional.minus_type,
+    promotional.limit_quota_price,
+    promotional.batch_discount,
+    promotional.discount,
+    promotional.audit_opinion,
+    promotional.enterprise_id,
+    promotional.time_limit_status,
+    promotional.time_limit_start,
+    promotional.time_limit_end,
+    promotional.store_id,
+    promotional.store_code,
+    promotional.each_piece_money,
+    promotional.the_pieces_discount,
+    promotional.slogan,
+    promotional.priority,
+    promotional.total_limit,
+    promotional.daily_limit,
+    promotional.people_limit,
+    promotional.daily_people_limit,
+
+    logo.prom_logo_id,
+    logo.prom_id as logo_prom_id,
+    logo.logo_flag,
+    logo.image_path,
+    logo.image_position,
+    logo.text_title,
+    logo.text_color,
+    logo.text_back_color,
+    logo.text_flag,
+
+    goods.prom_goods_id,
+    goods.coupon_id as goods_coupon_id,
+    goods.goods_code as goods_goods_code,
+    goods.goods_name,
+    goods."exclude",
+    goods.goods_prom_price,
+    goods.goods_prom_stock,
+    goods.goods_vip_price,
+    goods.gift_code,
+    goods.gift_name,
+    goods.limit_goods_code,
+    goods.limit_goods_type,
+    goods.goods_person_stock,
+    goods.goods_day_stock,
+    goods.goods_person_day_stock,
+    goods.each_full_num as goods_each_full_num,
+
+    trade.trade_id,
+    trade.prom_id as trade_prom_id,
+    trade.coupon_id as trade_coupon_id,
+    trade.goods_code as trade_goods_code,
+    trade.trade_prices,
+    trade.trade_total,
+    trade.person_order_limit,
+    trade.coupon_code as trade_coupon_code,
+
+    ladder.prom_ladder_id,
+    ladder.ladder_full,
+    ladder.trade_limit as ladder_trade_limit,
+    ladder.minus_type as ladder_minus_type,
+    ladder.minus_sale as ladder_minus_sale,
+    ladder.minus_num as ladder_minus_num,
+    ladder.minus_ladder_full as ladder_minus_ladder_full,
+    ladder.discount as ladder_discount,
+    ladder.each_piece_money as ladder_each_piece_money,
+    ladder.the_pieces_discount as ladder_the_pieces_discount,
+    ladder.minus_money as ladder_minus_money,
+
+    tradeLadder.trade_id as ladder_trade_id,
+    tradeLadder.coupon_id as ladder_coupon_id,
+    tradeLadder.goods_code as ladder_goods_code,
+    tradeLadder.trade_prices as ladder_trade_prices,
+    tradeLadder.trade_total as ladder_trade_total,
+    tradeLadder.person_order_limit as ladder_person_order_limit,
+    tradeLadder.coupon_code as ladder_coupon_code
+  </sql>
+  <sql id="Promotional_Detail_Ladder">
+    la.prom_ladder_id,
+    la.ladder_full,
+    la.trade_limit as ladder_trade_limit,
+    la.minus_type as ladder_minus_type,
+    la.minus_sale as ladder_minus_sale,
+    la.minus_num as ladder_minus_num,
+    la.minus_ladder_full as ladder_minus_ladder_full,
+    la.discount as ladder_discount,
+    la.each_piece_money as ladder_each_piece_money,
+    la.the_pieces_discount as ladder_the_pieces_discount,
+    la.minus_money as ladder_minus_money,
+
+    tr.trade_id as ladder_trade_id,
+    tr.coupon_id as ladder_coupon_id,
+    tr.goods_code as ladder_goods_code,
+    tr.trade_prices as ladder_trade_prices,
+    tr.trade_total as ladder_trade_total,
+    tr.person_order_limit as ladder_person_order_limit,
+    tr.coupon_code as ladder_coupon_code
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap"  >
+    select
+    <include refid="Base_Column_List" />
+    from t_promotional
+    where prom_id = #{promId}
+  </select>
+
+  <delete id="deleteByPrimaryKey" >
+    delete from t_promotional
+    where prom_id = #{promId,jdbcType=VARCHAR}
+  </delete>
+
+  <update id="deletePromotionalByMap" parameterType="map" >
+      UPDATE t_promotional set deleted = #{deleted,jdbcType=INTEGER}
+      WHERE prom_id = #{promId,jdbcType=VARCHAR} AND enterprise_code = #{enterpriseCode,jdbcType=VARCHAR}
+  </update>
+
+
+  <insert id="insertSelective" parameterType="com.suneee.marketingcenter.marketingcenter.model.vo.PromotionalVO" useGeneratedKeys="true" keyProperty="promId" >
+    insert into t_promotional
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="promId != null" >
+        prom_id,
+      </if>
+      <if test="enterpriseCode != null" >
+        enterprise_code,
+      </if>
+      <if test="activityName != null" >
+        activity_name,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="vipLevel != null" >
+        vip_level,
+      </if>
+      <if test="usePlatform != null" >
+        use_platform,
+      </if>
+      <if test="saleType != null" >
+        sale_type,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="fullCondition != null" >
+        full_condition,
+      </if>
+      <if test="batchSpecialPrice != null" >
+        batch_special_price,
+      </if>
+      <if test="batchReducePrice != null" >
+        batch_reduce_price,
+      </if>
+      <if test="fullElement != null" >
+        full_element,
+      </if>
+      <if test="eachFullMoney != null" >
+        each_full_money,
+      </if>
+      <if test="limits != null" >
+        limits,
+      </if>
+      <if test="eachSingle != null" >
+        each_single,
+      </if>
+      <if test="minusMoney != null" >
+        minus_money,
+      </if>
+      <if test="changeBuyLimit != null" >
+        change_buy_limit,
+      </if>
+      <if test="touchingUser != null" >
+        touching_user,
+      </if>
+      <if test="touchingTime != null" >
+        touching_time,
+      </if>
+      <if test="auditorUser != null" >
+        auditor_user,
+      </if>
+      <if test="auditorTime != null" >
+        auditor_time,
+      </if>
+      <if test="releases != null" >
+        releases,
+      </if>
+      <if test="releaseTime != null" >
+        release_time,
+      </if>
+      <if test="auditorStatus != null" >
+        auditor_status,
+      </if>
+      <if test="prefRange != null" >
+        pref_range,
+      </if>
+      <if test="prefWay != null" >
+        pref_way,
+      </if>
+      <if test="eachFullNum != null" >
+        each_full_num,
+      </if>
+      <if test="minusNum != null" >
+        minus_num,
+      </if>
+      <if test="activityCode != null" >
+        activity_code,
+      </if>
+      <if test="batchType != null" >
+        batch_type,
+      </if>
+      <if test="minusSale != null" >
+        minus_sale,
+      </if>
+      <if test="minusType != null" >
+        minus_type,
+      </if>
+      <if test="limitQuotaPrice != null" >
+        limit_quota_price,
+      </if>
+      <if test="batchDiscount != null" >
+        batch_discount,
+      </if>
+      <if test="discount != null" >
+        discount,
+      </if>
+      <if test="auditOpinion != null" >
+        audit_opinion,
+      </if>
+      <if test="enterpriseId != null" >
+        enterprise_id,
+      </if>
+      <if test="timeLimitStatus != null" >
+        time_limit_status,
+      </if>
+      <if test="timeLimitStart != null" >
+        time_limit_start,
+      </if>
+      <if test="timeLimitEnd != null" >
+        time_limit_end,
+      </if>
+      <if test="storeId != null" >
+        store_id,
+      </if>
+      <if test="storeCode != null" >
+        store_code,
+      </if>
+      <if test="eachPieceMoney != null" >
+        each_piece_money,
+      </if>
+      <if test="thePiecesDiscount != null" >
+        the_pieces_discount,
+      </if>
+      <if test="slogan != null" >
+        slogan,
+      </if>
+      <if test="priority != null" >
+        priority,
+      </if>
+      <if test="totalLimit != null" >
+        total_limit,
+      </if>
+      <if test="dailyLimit != null" >
+        daily_limit,
+      </if>
+      <if test="peopleLimit != null" >
+        people_limit,
+      </if>
+      <if test="dailyPeopleLimit != null" >
+        daily_people_limit,
+      </if>
+      deleted
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="promId != null" >
+        #{promId,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseCode != null" >
+        #{enterpriseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="activityName != null" >
+        #{activityName,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        TO_TIMESTAMP(#{startTime}, 'YYYY-MM-DD HH24:MI:SS'),
+      </if>
+      <if test="endTime != null" >
+        TO_TIMESTAMP(#{endTime}, 'YYYY-MM-DD HH24:MI:SS'),
+      </if>
+      <if test="vipLevel != null" >
+        #{vipLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="usePlatform != null" >
+        #{usePlatform,jdbcType=VARCHAR},
+      </if>
+      <if test="saleType != null" >
+        #{saleType,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="fullCondition != null" >
+        #{fullCondition,jdbcType=SMALLINT},
+      </if>
+      <if test="batchSpecialPrice != null" >
+        #{batchSpecialPrice,jdbcType=NUMERIC},
+      </if>
+      <if test="batchReducePrice != null" >
+        #{batchReducePrice,jdbcType=NUMERIC},
+      </if>
+      <if test="fullElement != null" >
+        #{fullElement,jdbcType=NUMERIC},
+      </if>
+      <if test="eachFullMoney != null" >
+        #{eachFullMoney,jdbcType=NUMERIC},
+      </if>
+      <if test="limits != null" >
+        #{limits,jdbcType=SMALLINT},
+      </if>
+      <if test="eachSingle != null" >
+        #{eachSingle,jdbcType=INTEGER},
+      </if>
+      <if test="minusMoney != null" >
+        #{minusMoney,jdbcType=NUMERIC},
+      </if>
+      <if test="changeBuyLimit != null" >
+        #{changeBuyLimit,jdbcType=INTEGER},
+      </if>
+      <if test="touchingUser != null" >
+        #{touchingUser,jdbcType=VARCHAR},
+      </if>
+      <if test="touchingTime != null" >
+        TO_TIMESTAMP(#{touchingTime}, 'YYYY-MM-DD	HH24:MI:SS'),
+      </if>
+      <if test="auditorUser != null" >
+        #{auditorUser,jdbcType=VARCHAR},
+      </if>
+      <if test="auditorTime != null" >
+        TO_TIMESTAMP(#{auditorTime}, 'YYYY-MM-DD	HH24:MI:SS'),
+      </if>
+      <if test="releases != null" >
+        #{releases,jdbcType=SMALLINT},
+      </if>
+      <if test="releaseTime != null" >
+        TO_TIMESTAMP(#{releaseTime}, 'YYYY-MM-DD	HH24:MI:SS'),
+      </if>
+      <if test="auditorStatus != null" >
+        #{auditorStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="prefRange != null" >
+        #{prefRange,jdbcType=SMALLINT},
+      </if>
+      <if test="prefWay != null" >
+        #{prefWay,jdbcType=SMALLINT},
+      </if>
+      <if test="eachFullNum != null" >
+        #{eachFullNum,jdbcType=INTEGER},
+      </if>
+      <if test="minusNum != null" >
+        #{minusNum,jdbcType=INTEGER},
+      </if>
+      <if test="activityCode != null" >
+        #{activityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="batchType != null" >
+        #{batchType,jdbcType=SMALLINT},
+      </if>
+      <if test="minusSale != null" >
+        #{minusSale,jdbcType=NUMERIC},
+      </if>
+      <if test="minusType != null" >
+        #{minusType,jdbcType=SMALLINT},
+      </if>
+      <if test="limitQuotaPrice != null" >
+        #{limitQuotaPrice,jdbcType=NUMERIC},
+      </if>
+      <if test="batchDiscount != null" >
+        #{batchDiscount,jdbcType=NUMERIC},
+      </if>
+      <if test="discount != null" >
+        #{discount,jdbcType=NUMERIC},
+      </if>
+      <if test="auditOpinion != null" >
+        #{auditOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseId != null" >
+        #{enterpriseId,jdbcType=INTEGER},
+      </if>
+      <if test="timeLimitStatus != null" >
+        #{timeLimitStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="timeLimitStart != null" >
+        TO_TIMESTAMP(#{timeLimitStart}, 'HH24:MI:SS'),
+      </if>
+      <if test="timeLimitEnd != null" >
+        TO_TIMESTAMP(#{timeLimitEnd}, 'HH24:MI:SS'),
+      </if>
+      <if test="storeId != null" >
+        #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="storeCode != null" >
+        #{storeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="eachPieceMoney != null" >
+        #{eachPieceMoney,jdbcType=NUMERIC},
+      </if>
+      <if test="thePiecesDiscount != null" >
+        #{thePiecesDiscount,jdbcType=NUMERIC},
+      </if>
+      <if test="slogan != null" >
+        #{slogan,jdbcType=VARCHAR},
+      </if>
+      <if test="priority != null" >
+        #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="totalLimit != null" >
+        #{totalLimit,jdbcType=SMALLINT},
+      </if>
+      <if test="dailyLimit != null" >
+        #{dailyLimit,jdbcType=SMALLINT},
+      </if>
+      <if test="peopleLimit != null" >
+        #{peopleLimit,jdbcType=SMALLINT},
+      </if>
+      <if test="dailyPeopleLimit != null" >
+        #{dailyPeopleLimit,jdbcType=SMALLINT},
+      </if>
+      0
+    </trim>
+  </insert>
+
+
+  <update id="updateByPrimaryKey" parameterType="com.suneee.marketingcenter.marketingcenter.model.vo.PromotionalVO" >
+    update t_promotional
+    set
+    activity_name = #{activityName,jdbcType=VARCHAR},
+    start_time = TO_TIMESTAMP(#{startTime}, 'YYYY-MM-DD HH24:MI:SS'),
+    end_time = TO_TIMESTAMP(#{endTime}, 'YYYY-MM-DD HH24:MI:SS'),
+    vip_level = #{vipLevel,jdbcType=VARCHAR},
+    use_platform = #{usePlatform,jdbcType=VARCHAR},
+    remark = #{remark,jdbcType=VARCHAR},
+    full_condition = #{fullCondition,jdbcType=SMALLINT},
+    batch_special_price = #{batchSpecialPrice,jdbcType=NUMERIC},
+    batch_reduce_price = #{batchReducePrice,jdbcType=NUMERIC},
+    full_element = #{fullElement,jdbcType=NUMERIC},
+    each_full_money = #{eachFullMoney,jdbcType=NUMERIC},
+    limits = #{limits,jdbcType=SMALLINT},
+    each_single = #{eachSingle,jdbcType=INTEGER},
+    minus_money = #{minusMoney,jdbcType=NUMERIC},
+    change_buy_limit = #{changeBuyLimit,jdbcType=INTEGER},
+    auditor_user = #{auditorUser,jdbcType=VARCHAR},
+    auditor_time = #{auditorTime,jdbcType=TIMESTAMP},
+    releases = #{releases,jdbcType=SMALLINT},
+    release_time = #{releaseTime,jdbcType=TIMESTAMP},
+    auditor_status = #{auditorStatus,jdbcType=SMALLINT},
+    pref_range = #{prefRange,jdbcType=SMALLINT},
+    pref_way = #{prefWay,jdbcType=SMALLINT},
+    each_full_num = #{eachFullNum,jdbcType=INTEGER},
+    minus_num = #{minusNum,jdbcType=INTEGER},
+    activity_code = #{activityCode,jdbcType=VARCHAR},
+    batch_type = #{batchType,jdbcType=SMALLINT},
+    minus_sale = #{minusSale,jdbcType=NUMERIC},
+    minus_type = #{minusType,jdbcType=SMALLINT},
+    limit_quota_price = #{limitQuotaPrice,jdbcType=NUMERIC},
+    batch_discount = #{batchDiscount,jdbcType=NUMERIC},
+    discount = #{discount,jdbcType=NUMERIC},
+    audit_opinion = #{auditOpinion,jdbcType=VARCHAR},
+    time_limit_status = #{timeLimitStatus,jdbcType=SMALLINT},
+    time_limit_start = TO_TIMESTAMP(#{timeLimitStart}, 'HH24:MI:SS'),
+    time_limit_end = TO_TIMESTAMP(#{timeLimitEnd}, 'HH24:MI:SS'),
+    each_piece_money = #{eachPieceMoney,jdbcType=NUMERIC},
+    the_pieces_discount = #{thePiecesDiscount,jdbcType=NUMERIC},
+    slogan = #{slogan,jdbcType=VARCHAR},
+    priority = #{priority,jdbcType=INTEGER},
+    total_limit = #{totalLimit,jdbcType=SMALLINT},
+    daily_limit = #{dailyLimit,jdbcType=SMALLINT},
+    people_limit = #{peopleLimit,jdbcType=SMALLINT},
+    daily_people_limit = #{dailyPeopleLimit,jdbcType=SMALLINT}
+    where prom_id = #{promId,jdbcType=VARCHAR}
+     and enterprise_code = #{enterpriseCode,jdbcType=VARCHAR}
+  </update>
+
+  <select id="getPromotionalListByMap" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select
+    <include refid="Promotional_Home_Page_List"/>
+    from t_promotional
+    where deleted=0
+    and store_code = #{storeCode,jdbcType=VARCHAR}
+    AND enterprise_code = #{enterpriseCode,jdbcType=VARCHAR}
+    <if test="saleType != null and saleType != ''">
+      and sale_type = #{saleType,jdbcType=VARCHAR}
+    </if>
+    <if test="auditorStatus != null and auditorStatus != ''  ">
+      and auditor_status = #{auditorStatus,jdbcType=SMALLINT}
+    </if>
+    <if test="activityCode != null and activityCode != '' ">
+      AND position(#{activityCode,jdbcType=VARCHAR} in activity_code) > 0
+    </if>
+    <if test="activityName != null and activityName != '' ">
+      AND position(#{activityName,jdbcType=VARCHAR} in activity_name) > 0
+    </if>
+    <if test="touchingUserName != null and touchingUserName != '' ">
+      AND position(#{touchingUserName,jdbcType=VARCHAR} in touching_user) > 0
+    </if>
+    <if test="auditorUserName != null and auditorUserName != '' ">
+      AND position(#{auditorUserName,jdbcType=VARCHAR} in auditor_user) > 0
+    </if>
+
+    <if test="startTimeBegin != null and startTimeBegin != ''">
+      and start_time &gt;= to_date(#{startTimeBegin},'yyyy-MM-dd')
+    </if>
+    <if test="startTimeEnd != null and startTimeEnd != ''">
+      and start_time &lt;= to_date(#{startTimeEnd},'yyyy-MM-dd')
+    </if>
+
+    <if test="endTimeBegin != null and endTimeBegin != ''">
+      and end_time &gt;= to_date(#{endTimeBegin},'yyyy-MM-dd')
+    </if>
+    <if test="endTimeEnd != null and endTimeEnd != ''">
+      and end_time &lt;= to_date(#{endTimeEnd},'yyyy-MM-dd')
+    </if>
+
+    <if test="touchingTimeBegin != null and touchingTimeBegin != ''">
+      and touching_time &gt;= to_date(#{touchingTimeBegin},'yyyy-MM-dd')
+    </if>
+    <if test="touchingTimeEnd != null and touchingTimeEnd != ''">
+      and touching_time &lt;= to_date(#{touchingTimeEnd},'yyyy-MM-dd')
+    </if>
+
+    <if test="auditorTimeBegin != null and auditorTimeBegin != ''">
+      and auditor_time &gt;= to_date(#{auditorTimeBegin},'yyyy-MM-dd')
+    </if>
+    <if test="auditorTimeEnd != null and auditorTimeEnd != ''">
+      and auditor_time &lt;= to_date(#{auditorTimeEnd},'yyyy-MM-dd')
+    </if>
+
+    <if test="releaseTimeBegin != null and releaseTimeBegin != ''">
+      and release_time &gt;= to_date(#{releaseTimeBegin},'yyyy-MM-dd')
+    </if>
+    <if test="releaseTimeEnd != null and releaseTimeEnd !=''">
+      and release_time &lt;= to_date(#{releaseTimeEnd},'yyyy-MM-dd')
+    </if>
+    <if test="activityCodes != null and activityCodes.size > 0">
+      and activity_code in
+      <foreach item="item" index="index" collection="activityCodes"
+               open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </if>
+    <if test=" pageSize!=null and startRow!=null  ">
+      ORDER BY touching_time desc
+      limit #{pageSize,jdbcType=INTEGER} offset #{startRow,jdbcType=INTEGER}
+    </if>
+  </select>
+
+  <select id="getPromotionalCountByMap" resultType="java.lang.Integer" parameterType="map">
+    select
+    count(*)
+    from t_promotional
+    where deleted=0
+    and store_code = #{storeCode,jdbcType=VARCHAR}
+    AND enterprise_code = #{enterpriseCode,jdbcType=VARCHAR}
+    <if test="saleType != null and saleType != ''">
+      and sale_type = #{saleType,jdbcType=VARCHAR}
+    </if>
+    <if test="auditorStatus != null and auditorStatus != ''  ">
+      and auditor_status = #{auditorStatus,jdbcType=SMALLINT}
+    </if>
+    <if test="activityCode != null and activityCode != '' ">
+      AND position(#{activityCode,jdbcType=VARCHAR} in activity_code) > 0
+    </if>
+    <if test="activityName != null and activityName != '' ">
+      AND position(#{activityName,jdbcType=VARCHAR} in activity_name) > 0
+    </if>
+    <if test="touchingUserName != null and touchingUserName != '' ">
+      AND position(#{touchingUserName,jdbcType=VARCHAR} in touching_user) > 0
+    </if>
+    <if test="auditorUserName != null and auditorUserName != '' ">
+      AND position(#{auditorUserName,jdbcType=VARCHAR} in auditor_user) > 0
+    </if>
+
+    <if test="startTimeBegin != null and startTimeBegin != ''">
+      and start_time &gt;= to_date(#{startTimeBegin},'yyyy-MM-dd')
+    </if>
+    <if test="startTimeEnd != null and startTimeEnd != ''">
+      and start_time &lt;= to_date(#{startTimeEnd},'yyyy-MM-dd')
+    </if>
+
+    <if test="endTimeBegin != null and endTimeBegin != ''">
+      and end_time &gt;= to_date(#{endTimeBegin},'yyyy-MM-dd')
+    </if>
+    <if test="endTimeEnd != null and endTimeEnd != ''">
+      and end_time &lt;= to_date(#{endTimeEnd},'yyyy-MM-dd')
+    </if>
+
+    <if test="touchingTimeBegin != null and touchingTimeBegin != ''">
+      and touching_time &gt;= to_date(#{touchingTimeBegin},'yyyy-MM-dd')
+    </if>
+    <if test="touchingTimeEnd != null and touchingTimeEnd != ''">
+      and touching_time &lt;= to_date(#{touchingTimeEnd},'yyyy-MM-dd')
+    </if>
+
+    <if test="auditorTimeBegin != null and auditorTimeBegin != ''">
+      and auditor_time &gt;= to_date(#{auditorTimeBegin},'yyyy-MM-dd')
+    </if>
+    <if test="auditorTimeEnd != null and auditorTimeEnd != ''">
+      and auditor_time &lt;= to_date(#{auditorTimeEnd},'yyyy-MM-dd')
+    </if>
+
+    <if test="releaseTimeBegin != null and releaseTimeBegin != ''">
+      and release_time &gt;= to_date(#{releaseTimeBegin},'yyyy-MM-dd')
+    </if>
+    <if test="releaseTimeEnd != null and releaseTimeEnd !=''">
+      and release_time &lt;= to_date(#{releaseTimeEnd},'yyyy-MM-dd')
+    </if>
+  </select>
+
+
+  <select id="getPromotionalVODetail" resultMap="PromotionalVOResultMap">
+    SELECT
+    <include refid="Promotional_Detail"/>
+    FROM t_promotional promotional
+    LEFT JOIN t_prom_trade trade ON promotional.prom_id = trade.prom_id
+    LEFT JOIN t_prom_goods goods ON goods.prom_id = promotional.prom_id
+    LEFT JOIN t_prom_logo logo ON logo.prom_id = promotional.prom_id
+    LEFT JOIN t_prom_ladder ladder ON  promotional.prom_id = ladder.prom_id
+    LEFT JOIN t_prom_trade tradeLadder ON tradeLadder.prom_ladder_id = ladder.prom_ladder_id
+    <where>
+      promotional.deleted = 0
+      <if test="id != null">
+        and promotional.prom_id = #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="activityCode != null">
+        and promotional.activity_code = #{activityCode,jdbcType=VARCHAR}
+      </if>
+      AND promotional.enterprise_code = #{enterpriseCode,jdbcType=VARCHAR}
+    </where>
+
+  </select>
+
+  <select id="getAllPromotionalListByMap"  resultMap="BaseResultMap"  parameterType="map" >
+    select
+      <include refid="Base_Column_List" />
+    from t_promotional tp
+    where
+    deleted = 0
+    and auditor_status = #{auditorStatus,jdbcType=INTEGER}
+    and release_time is not null
+  </select>
+
+  <select id="selectPromotionalByIdWithoutRange"
+          resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_promotional
+    where prom_id = #{id,jdbcType=VARCHAR}
+    AND enterprise_code = #{enterpriseCode,jdbcType=VARCHAR}
+    and deleted = 0
+  </select>
+
+  <update id="updateAuditStatus"
+          parameterType="com.suneee.marketingcenter.marketingcenter.model.dbo.Promotional">
+    update t_promotional
+    set
+    <if test="auditorUser != null">
+      auditor_user = #{auditorUser,jdbcType=VARCHAR},
+    </if>
+    <if test="auditorTime != null">
+      auditor_time = #{auditorTime,jdbcType=TIMESTAMP},
+    </if>
+    <if test="releaseTime != null">
+      release_time = #{releaseTime,jdbcType=TIMESTAMP},
+    </if>
+    <if test="auditOpinion != null">
+      audit_opinion = #{auditOpinion,jdbcType=VARCHAR},
+    </if>
+    auditor_status = #{auditorStatus,jdbcType=SMALLINT}
+    where prom_id = #{promId,jdbcType=INTEGER}
+    AND enterprise_code = #{enterpriseCode,jdbcType=VARCHAR}
+  </update>
+
+  <update id="updateAuditStatusByIds"  parameterType="java.util.Map">
+    update t_promotional
+    set
+    auditor_status = #{auditorStatus,jdbcType=INTEGER}
+    where prom_id in
+    <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </update>
+
+
+  <select id="getPromotionalListByStatus" parameterType="com.suneee.marketingcenter.marketingcenter.model.dto.PromotionalDTO"
+          resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from t_promotional
+    <where>
+      deleted = 0 and
+      enterprise_code = #{enterpriseCode,jdbcType=VARCHAR}
+      <foreach item="item" index="index" collection="statusList" separator="or" open="AND (" close=")">
+        auditor_status = #{item}
+      </foreach>
+
+      <if test="saleType != null and saleType !=''">
+        and sale_type = #{saleType,jdbcType=VARCHAR}
+      </if>
+      <if test="storeCode != null and storeCode !=''">
+        and store_code = #{storeCode,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+
+
+
+  <select id="getUsablePromotional" resultMap="PromotionalVOResultMap"
+          parameterType="com.suneee.marketingcenter.marketingcenter.model.dto.PromotionalDTO">
+    SELECT
+    <include refid="Promotional_Detail"/>
+    FROM t_promotional promotional
+    LEFT JOIN t_prom_trade trade ON promotional.prom_id = trade.prom_id
+    LEFT JOIN t_prom_goods goods ON goods.prom_id = promotional.prom_id
+    LEFT JOIN t_prom_logo logo ON logo.prom_id = promotional.prom_id
+    LEFT JOIN t_prom_ladder ladder ON  promotional.prom_id = ladder.prom_id
+    LEFT JOIN t_prom_trade tradeLadder ON tradeLadder.prom_ladder_id = ladder.prom_ladder_id
+    WHERE
+    promotional.auditor_status = #{auditorStatus,jdbcType=SMALLINT}
+    AND promotional.deleted = 0
+    AND promotional.enterprise_code = #{enterpriseCode,jdbcType=VARCHAR}
+
+    <if test="storeCode != null and storeCode != ''">
+      AND promotional.store_code = #{storeCode,jdbcType=VARCHAR}
+    </if>
+    <if test="unSearchSeckill">
+      AND promotional.sale_type != 'seckill'
+    </if>
+  </select>
+
+  <select id="getPromotionalByCondition" resultMap="PromotionalVOResultMap"
+          parameterType="com.suneee.marketingcenter.marketingcenter.model.dto.PromotionalDTO">
+    SELECT
+    <include refid="Promotional_Detail"/>
+    FROM t_promotional promotional
+    LEFT JOIN t_prom_trade trade ON promotional.prom_id = trade.prom_id
+    LEFT JOIN t_prom_goods goods ON goods.prom_id = promotional.prom_id
+    LEFT JOIN t_prom_logo logo ON logo.prom_id = promotional.prom_id
+    LEFT JOIN t_prom_ladder ladder ON  promotional.prom_id = ladder.prom_id
+    LEFT JOIN t_prom_trade tradeLadder ON tradeLadder.prom_ladder_id = ladder.prom_ladder_id
+    <where>
+      <if test="storeId != null and storeId != ''">
+        AND promotional.store_id = #{storeId,jdbcType=VARCHAR}
+      </if>
+      <if test="storeCode != null and storeCode != ''">
+        AND promotional.store_code = #{storeCode,jdbcType=VARCHAR}
+      </if>
+      <if test="vipLevel != null and vipLevel != ''">
+        AND (position(#{vipLevel,jdbcType=VARCHAR} in promotional.vip_level) > 0
+        OR  position('unlimited' in promotional.vip_level) > 0
+        )
+      </if>
+      <if test="newUser == null and userId != null">
+        AND position('new' in promotional.vip_level) = 0
+      </if>
+      <if test="usePlatform != null and usePlatform != ''">
+        AND position(#{usePlatform,jdbcType=VARCHAR} in promotional.use_platform) > 0
+      </if>
+      <if test="unSearchSeckill">
+        AND promotional.sale_type != 'seckill'
+      </if>
+      <if test="endTime != null  and endTime != ''">
+        AND promotional.start_time
+        &lt;=TO_TIMESTAMP(#{endTime},'YYYY-MM-DD HH24:MI:SS')
+      </if>
+      <if test="startTime != null and startTime != ''">
+        AND promotional.end_time
+        &gt;=TO_TIMESTAMP(#{startTime},'YYYY-MM-DD HH24:MI:SS')
+      </if>
+      <if test="goodsCode != null and goodsCode != ''">
+          AND (promotional.pref_range = 4 or goods.goods_code = #{goodsCode,jdbcType=VARCHAR})
+      </if>
+      <if test="statusList != null and statusList.size > 0">
+        AND  promotional.auditor_status in
+        <foreach item="item" index="index" collection="statusList" separator="," open="(" close=")">
+          #{item}
+        </foreach>
+      </if>
+      <if test="saleTypeList != null and saleTypeList.size > 0">
+        AND promotional.sale_type in
+        <foreach item="item" index="index" collection="saleTypeList" separator="," open="(" close=")">
+           #{item}
+        </foreach>
+      </if>
+      <if test="onTimeLimit">
+        AND NOT EXISTS (SELECT 1 from t_promotional t1
+        WHERE promotional.prom_id = t1.prom_id
+        and t1.time_limit_status = 1
+        and (current_time &gt; t1.time_limit_end or current_time &lt; t1.time_limit_start ) )
+      </if>
+      AND promotional.deleted = 0
+      AND promotional.enterprise_code = #{enterpriseCode,jdbcType=VARCHAR}
+    </where>
+
+
+  </select>
+
+  <select id="getPromotionalVOListByKeys" parameterType="java.util.Map" resultMap="PromotionalVOResultMap">
+    SELECT
+    <include refid="Promotional_Detail"/>
+    FROM t_promotional promotional
+    LEFT JOIN t_prom_trade trade ON promotional.prom_id = trade.prom_id
+    LEFT JOIN t_prom_goods goods ON goods.prom_id = promotional.prom_id
+    LEFT JOIN t_prom_logo logo ON logo.prom_id = promotional.prom_id
+    LEFT JOIN t_prom_ladder ladder ON  promotional.prom_id = ladder.prom_id
+    LEFT JOIN t_prom_trade tradeLadder ON tradeLadder.prom_ladder_id = ladder.prom_ladder_id
+    <where>
+      promotional.deleted = 0
+      AND promotional.enterprise_code = #{enterpriseCode,jdbcType=VARCHAR}
+      <if test="ids != null and ids.size() > 0">
+        AND
+        <foreach item="item" index="index" collection="ids" open="(" separator="or" close=")">
+          promotional.prom_id = #{item}
+        </foreach>
+      </if>
+      <if test="promCodes != null and promCodes.size() > 0">
+        AND
+        <foreach item="item" index="index" collection="promCodes" open="(" separator="or" close=")">
+          promotional.prom_code = #{item}
+        </foreach>
+      </if>
+    </where>
+  </select>
+
+  <select id="goodsInPromotional" resultMap="GoodsInPromotionalResultMap"
+          parameterType="com.suneee.marketingcenter.marketingcenter.model.dto.PromotionalDTO">
+    SELECT
+    <include refid="Promotional_Detail"/>
+    FROM t_promotional promotional
+    LEFT JOIN t_prom_trade trade ON promotional.prom_id = trade.prom_id
+    LEFT JOIN t_prom_goods goods ON goods.prom_id = promotional.prom_id
+    LEFT JOIN t_prom_logo logo ON logo.prom_id = promotional.prom_id
+    LEFT JOIN t_prom_ladder ladder ON  promotional.prom_id = ladder.prom_id
+    LEFT JOIN t_prom_trade tradeLadder ON tradeLadder.prom_ladder_id = ladder.prom_ladder_id
+    <where>
+      <if test="storeId != null and storeId != ''">
+        AND promotional.store_id = #{storeId,jdbcType=VARCHAR}
+      </if>
+      <if test="storeCode != null and storeCode != ''">
+        AND promotional.store_code = #{storeCode,jdbcType=VARCHAR}
+      </if>
+      <if test="vipLevel != null and vipLevel != ''">
+        AND (position(#{vipLevel,jdbcType=VARCHAR} in promotional.vip_level) > 0
+        OR  position('unlimited' in promotional.vip_level) > 0
+        )
+      </if>
+      <if test="newUser == null and userId != null">
+        AND position('new' in promotional.vip_level) = 0
+      </if>
+      <if test="usePlatform != null and usePlatform != ''">
+        AND position(#{usePlatform,jdbcType=VARCHAR} in promotional.use_platform) > 0
+      </if>
+      <if test="goodsCode != null and goodsCode != ''">
+        AND (promotional.pref_range = 4 or goods.goods_code = #{goodsCode,jdbcType=VARCHAR})
+      </if>
+      <if test="unSearchSeckill">
+        AND promotional.sale_type != 'seckill'
+      </if>
+      <if test="endTime != null  and endTime != ''">
+        AND promotional.start_time
+        &lt;=TO_TIMESTAMP(#{endTime},'YYYY-MM-DD HH24:MI:SS')
+      </if>
+      <if test="startTime != null and startTime != ''">
+        AND promotional.end_time
+        &gt;=TO_TIMESTAMP(#{startTime},'YYYY-MM-DD HH24:MI:SS')
+      </if>
+      <if test="statusList != null and statusList.size > 0">
+        AND  promotional.auditor_status in
+        <foreach item="item" index="index" collection="statusList" separator="," open="(" close=")">
+          #{item}
+        </foreach>
+      </if>
+        <if test="saleTypeList != null and saleTypeList.size > 0">
+            AND promotional.sale_type in
+            <foreach item="item" index="index" collection="saleTypeList" separator="," open="(" close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="goodsCodeList != null and goodsCodeList.size > 0">
+            AND (promotional.pref_range = 4 or
+            goods.goods_code in
+            <foreach item="item" index="index" collection="goodsCodeList" separator="," open="(" close=")">
+                #{item}
+            </foreach>
+            )
+        </if>
+      <if test="onTimeLimit">
+        AND NOT EXISTS (SELECT 1 from t_promotional t1
+        WHERE promotional.prom_id = t1.prom_id
+        and t1.time_limit_status = 1
+        and (current_time &gt; t1.time_limit_end or current_time &lt; t1.time_limit_start ) )
+      </if>
+      AND promotional.deleted = 0
+      AND promotional.enterprise_code = #{enterpriseCode,jdbcType=VARCHAR}
+    </where>
+
+  </select>
+
+
+
+</mapper>

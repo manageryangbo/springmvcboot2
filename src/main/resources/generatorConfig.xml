@@ -48,7 +48,7 @@
 		</javaClientGenerator>
 
 		<!-- 指定数据库表 -->
-		<table tableName="t_prom_logo" domainObjectName="PromLogo"
+		<table tableName="t_prom_ladder" domainObjectName="PromotionalLadder"
 			enableCountByExample="false" enableUpdateByExample="false"
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false"></table>
