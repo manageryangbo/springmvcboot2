@@ -8,16 +8,7 @@ import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 import java.io.*;
 
-//import com.suneee.scn.basic.component.cache.CacheUtils;
-//import com.suneee.scn.system.model.dbo.SystemUserInfoT;
-//import org.jboss.resteasy.core.interception.jaxrs.PreMatchContainerRequestContext;
-//import org.jboss.resteasy.spi.HttpRequest;
 
-//import javax.ws.rs.core.MultivaluedMap;
-//import javax.ws.rs.core.Response;
-//import javax.ws.rs.core.Response.ResponseBuilder;
-//import javax.ws.rs.core.Response.Status;
-//import java.util.List;
 
 /**
  * Created by Administrator on 2017/6/7.
