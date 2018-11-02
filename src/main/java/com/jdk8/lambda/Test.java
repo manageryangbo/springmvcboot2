@@ -10,7 +10,7 @@
  */
 package com.jdk8.lambda;
 
-import com.jdk8.com.suneee.dome2.Apple;
+import com.jdk8.com.suneee.dome.Apple;
 
 public class Test {
 
