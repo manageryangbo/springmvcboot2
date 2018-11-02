@@ -8,7 +8,7 @@
  * <author>          <time>          <version>          <desc>
  * 作者姓名          修改时间          版本号            描述
  */
-package com.jdk8.com.suneee.dome;
+package com.jdk8.com.suneee.dome2;
 
 public class Apple {
     private Integer id ;
