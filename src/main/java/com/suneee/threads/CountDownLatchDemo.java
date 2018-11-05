@@ -18,22 +18,22 @@ public class CountDownLatchDemo {
     /**
      * 模拟爸爸去饭店
      */
-    public static void fatherToRes() {
+    public static void fatherToCompany() {
         System.out.println("爸爸步行去公司。");
     }
 
     /**
      * 模拟我去饭店
      */
-    public static void motherToRes() {
+    public static void motherToShopping() {
         System.out.println("妈妈挤公交去商场。");
     }
 
     /**
      * 模拟妈妈去饭店
      */
-    public static void meToRes() {
-        System.out.println("我乘地铁去医院。");
+    public static void meToHome() {
+        System.out.println("我乘地铁回家。");
     }
 
     /**
@@ -62,7 +62,7 @@ public class CountDownLatchDemo {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                fatherToRes();
+                fatherToCompany();
             };
         }.start();
         new Thread() {
@@ -73,7 +73,7 @@ public class CountDownLatchDemo {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                motherToRes();
+                motherToShopping();
             };
         }.start();
         new Thread() {
@@ -83,7 +83,7 @@ public class CountDownLatchDemo {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                meToRes();
+                meToHome();
             };
         }.start();
         new Thread() {
