@@ -45,6 +45,5 @@ public class TestPractice {
         Optional<Transaction> minTransactionAgain = transactions.stream().min(Comparator.comparing(Transaction::getValue));
 
 
-
     }
 }

@@ -25,6 +25,7 @@ public class ObjectAdapter implements Target2{
 
     public void sampleOperation2(){
         //写相关的代码
+        System.out.println( "Come In ObjectAdapter sampleOperation2" );
     }
 
 }
