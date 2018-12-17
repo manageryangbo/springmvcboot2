@@ -12,6 +12,7 @@ package com.jdk8.future;
 
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 import java.util.concurrent.Callable;
@@ -22,6 +23,7 @@ import java.util.concurrent.Future;
 /**
  *     异步还需验证 ?
  */
+@Component
 public class AsyncThread {
 
     public static void main(String[] args) {
