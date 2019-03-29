@@ -11,6 +11,7 @@
 package com.suneee.practise;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Student  implements Serializable ,   Cloneable{
 
@@ -18,10 +19,19 @@ public class Student  implements Serializable ,   Cloneable{
     private Integer age;
     private Integer allscore;
     private Integer deleted;
+    private Date date ;
 
     @Override
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public Integer getDeleted() {

@@ -35,6 +35,10 @@ public class TestPractice {
         );
 
         List<Transaction> transactionList = transactions.stream().filter(transaction -> transaction.getYear() == 2011).sorted(Comparator.comparing(Transaction::getValue)).collect(Collectors.toList());
+        for (Transaction transaction:
+                transactionList) {
+            System.out.println( "==============" + transaction.getValue() );
+        }
         List<String> cityList = transactions.stream().map(transaction -> transaction.getTrader().getCity()).distinct().collect(Collectors.toList());
         List<Trader> traderNameList = transactions.stream().map(Transaction::getTrader).filter(trader -> trader.getCity() == "Cambridge").distinct().sorted(Comparator.comparing( Trader::getName )).collect(Collectors.toList());
         String  traderStr = transactions.stream().map(transaction -> transaction.getTrader().getName()).distinct().sorted().reduce("",(a,b)->a+b);

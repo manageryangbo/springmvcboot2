@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.marketcenter.dao.PromotionalGoodsDao" >
+  <resultMap id="BaseResultMap" type="com.marketcenter.dbo.PromotionalGoods" >
+    <id column="prom_goods_id" property="promGoodsId" jdbcType="INTEGER" />
+    <result column="prom_id" property="promId" jdbcType="INTEGER" />
+    <result column="coupon_id" property="couponId" jdbcType="INTEGER" />
+    <result column="goods_code" property="goodsCode" jdbcType="VARCHAR" />
+    <result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
+    <result column="exclude" property="exclude" jdbcType="SMALLINT" />
+    <result column="goods_prom_price" property="goodsPromPrice" jdbcType="NUMERIC" />
+    <result column="goods_prom_stock" property="goodsPromStock" jdbcType="NUMERIC" />
+    <result column="goods_vip_price" property="goodsVipPrice" jdbcType="NUMERIC" />
+    <result column="gift_code" property="giftCode" jdbcType="VARCHAR" />
+    <result column="gift_name" property="giftName" jdbcType="VARCHAR" />
+    <result column="limit_goods_code" property="limitGoodsCode" jdbcType="VARCHAR" />
+    <result column="limit_goods_type" property="limitGoodsType" jdbcType="SMALLINT" />
+    <result column="goods_person_stock" property="goodsPersonStock" jdbcType="NUMERIC" />
+    <result column="goods_day_stock" property="goodsDayStock" jdbcType="NUMERIC" />
+    <result column="goods_person_day_stock" property="goodsPersonDayStock" jdbcType="NUMERIC" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    prom_goods_id, prom_id, coupon_id, goods_code, goods_name, exclude, goods_prom_price, 
+    goods_prom_stock, goods_vip_price, gift_code, gift_name, limit_goods_code, limit_goods_type, 
+    goods_person_stock, goods_day_stock, goods_person_day_stock
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_prom_goods
+    where prom_goods_id = #{promGoodsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_prom_goods
+    where prom_goods_id = #{promGoodsId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.marketcenter.dbo.PromotionalGoods" >
+    insert into t_prom_goods (prom_goods_id, prom_id, coupon_id, 
+      goods_code, goods_name, exclude, 
+      goods_prom_price, goods_prom_stock, goods_vip_price, 
+      gift_code, gift_name, limit_goods_code, 
+      limit_goods_type, goods_person_stock, goods_day_stock, 
+      goods_person_day_stock)
+    values (#{promGoodsId,jdbcType=INTEGER}, #{promId,jdbcType=INTEGER}, #{couponId,jdbcType=INTEGER}, 
+      #{goodsCode,jdbcType=VARCHAR}, #{goodsName,jdbcType=VARCHAR}, #{exclude,jdbcType=SMALLINT}, 
+      #{goodsPromPrice,jdbcType=NUMERIC}, #{goodsPromStock,jdbcType=NUMERIC}, #{goodsVipPrice,jdbcType=NUMERIC}, 
+      #{giftCode,jdbcType=VARCHAR}, #{giftName,jdbcType=VARCHAR}, #{limitGoodsCode,jdbcType=VARCHAR}, 
+      #{limitGoodsType,jdbcType=SMALLINT}, #{goodsPersonStock,jdbcType=NUMERIC}, #{goodsDayStock,jdbcType=NUMERIC}, 
+      #{goodsPersonDayStock,jdbcType=NUMERIC})
+  </insert>
+  <insert id="insertSelective" parameterType="com.marketcenter.dbo.PromotionalGoods" >
+    insert into t_prom_goods
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="promGoodsId != null" >
+        prom_goods_id,
+      </if>
+      <if test="promId != null" >
+        prom_id,
+      </if>
+      <if test="couponId != null" >
+        coupon_id,
+      </if>
+      <if test="goodsCode != null" >
+        goods_code,
+      </if>
+      <if test="goodsName != null" >
+        goods_name,
+      </if>
+      <if test="exclude != null" >
+        exclude,
+      </if>
+      <if test="goodsPromPrice != null" >
+        goods_prom_price,
+      </if>
+      <if test="goodsPromStock != null" >
+        goods_prom_stock,
+      </if>
+      <if test="goodsVipPrice != null" >
+        goods_vip_price,
+      </if>
+      <if test="giftCode != null" >
+        gift_code,
+      </if>
+      <if test="giftName != null" >
+        gift_name,
+      </if>
+      <if test="limitGoodsCode != null" >
+        limit_goods_code,
+      </if>
+      <if test="limitGoodsType != null" >
+        limit_goods_type,
+      </if>
+      <if test="goodsPersonStock != null" >
+        goods_person_stock,
+      </if>
+      <if test="goodsDayStock != null" >
+        goods_day_stock,
+      </if>
+      <if test="goodsPersonDayStock != null" >
+        goods_person_day_stock,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="promGoodsId != null" >
+        #{promGoodsId,jdbcType=INTEGER},
+      </if>
+      <if test="promId != null" >
+        #{promId,jdbcType=INTEGER},
+      </if>
+      <if test="couponId != null" >
+        #{couponId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsCode != null" >
+        #{goodsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null" >
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="exclude != null" >
+        #{exclude,jdbcType=SMALLINT},
+      </if>
+      <if test="goodsPromPrice != null" >
+        #{goodsPromPrice,jdbcType=NUMERIC},
+      </if>
+      <if test="goodsPromStock != null" >
+        #{goodsPromStock,jdbcType=NUMERIC},
+      </if>
+      <if test="goodsVipPrice != null" >
+        #{goodsVipPrice,jdbcType=NUMERIC},
+      </if>
+      <if test="giftCode != null" >
+        #{giftCode,jdbcType=VARCHAR},
+      </if>
+      <if test="giftName != null" >
+        #{giftName,jdbcType=VARCHAR},
+      </if>
+      <if test="limitGoodsCode != null" >
+        #{limitGoodsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="limitGoodsType != null" >
+        #{limitGoodsType,jdbcType=SMALLINT},
+      </if>
+      <if test="goodsPersonStock != null" >
+        #{goodsPersonStock,jdbcType=NUMERIC},
+      </if>
+      <if test="goodsDayStock != null" >
+        #{goodsDayStock,jdbcType=NUMERIC},
+      </if>
+      <if test="goodsPersonDayStock != null" >
+        #{goodsPersonDayStock,jdbcType=NUMERIC},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.marketcenter.dbo.PromotionalGoods" >
+    update t_prom_goods
+    <set >
+      <if test="promId != null" >
+        prom_id = #{promId,jdbcType=INTEGER},
+      </if>
+      <if test="couponId != null" >
+        coupon_id = #{couponId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsCode != null" >
+        goods_code = #{goodsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null" >
+        goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="exclude != null" >
+        exclude = #{exclude,jdbcType=SMALLINT},
+      </if>
+      <if test="goodsPromPrice != null" >
+        goods_prom_price = #{goodsPromPrice,jdbcType=NUMERIC},
+      </if>
+      <if test="goodsPromStock != null" >
+        goods_prom_stock = #{goodsPromStock,jdbcType=NUMERIC},
+      </if>
+      <if test="goodsVipPrice != null" >
+        goods_vip_price = #{goodsVipPrice,jdbcType=NUMERIC},
+      </if>
+      <if test="giftCode != null" >
+        gift_code = #{giftCode,jdbcType=VARCHAR},
+      </if>
+      <if test="giftName != null" >
+        gift_name = #{giftName,jdbcType=VARCHAR},
+      </if>
+      <if test="limitGoodsCode != null" >
+        limit_goods_code = #{limitGoodsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="limitGoodsType != null" >
+        limit_goods_type = #{limitGoodsType,jdbcType=SMALLINT},
+      </if>
+      <if test="goodsPersonStock != null" >
+        goods_person_stock = #{goodsPersonStock,jdbcType=NUMERIC},
+      </if>
+      <if test="goodsDayStock != null" >
+        goods_day_stock = #{goodsDayStock,jdbcType=NUMERIC},
+      </if>
+      <if test="goodsPersonDayStock != null" >
+        goods_person_day_stock = #{goodsPersonDayStock,jdbcType=NUMERIC},
+      </if>
+    </set>
+    where prom_goods_id = #{promGoodsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.marketcenter.dbo.PromotionalGoods" >
+    update t_prom_goods
+    set prom_id = #{promId,jdbcType=INTEGER},
+      coupon_id = #{couponId,jdbcType=INTEGER},
+      goods_code = #{goodsCode,jdbcType=VARCHAR},
+      goods_name = #{goodsName,jdbcType=VARCHAR},
+      exclude = #{exclude,jdbcType=SMALLINT},
+      goods_prom_price = #{goodsPromPrice,jdbcType=NUMERIC},
+      goods_prom_stock = #{goodsPromStock,jdbcType=NUMERIC},
+      goods_vip_price = #{goodsVipPrice,jdbcType=NUMERIC},
+      gift_code = #{giftCode,jdbcType=VARCHAR},
+      gift_name = #{giftName,jdbcType=VARCHAR},
+      limit_goods_code = #{limitGoodsCode,jdbcType=VARCHAR},
+      limit_goods_type = #{limitGoodsType,jdbcType=SMALLINT},
+      goods_person_stock = #{goodsPersonStock,jdbcType=NUMERIC},
+      goods_day_stock = #{goodsDayStock,jdbcType=NUMERIC},
+      goods_person_day_stock = #{goodsPersonDayStock,jdbcType=NUMERIC}
+    where prom_goods_id = #{promGoodsId,jdbcType=INTEGER}
+  </update>
+</mapper>
