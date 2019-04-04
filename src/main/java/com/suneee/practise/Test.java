@@ -10,10 +10,12 @@
  */
 package com.suneee.practise;
 
+import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Test {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CloneNotSupportedException {
 
         // 数组和集合的(类型和大小)最好同步 (String&&list.size)
         List<String> list = new ArrayList<String>(2);
@@ -57,6 +59,30 @@ public class Test {
         for (Map.Entry<String,Object> entry : entriesMap){
             System.out.println("entry【key:"+entry.getKey()+";value:"+entry.getValue()+"】");
         }
+
+
+//        System.out.println( String.format("mall_goods:%s:%s:%s","1234545","NJXS","1613") );
+
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public static <T> List<T> deepCopyList(List<T> src)
+    {
+        List<T> dest = null;
+        try{
+            ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
+            ObjectOutputStream out = new ObjectOutputStream(byteOut);
+            out.writeObject(src);
+            ByteArrayInputStream byteIn = new ByteArrayInputStream(byteOut.toByteArray());
+            ObjectInputStream in = new ObjectInputStream(byteIn);
+            dest = (List<T>) in.readObject();
+        }catch (IOException e){
+            e.getStackTrace();
+        }catch (ClassNotFoundException e){
+            e.getStackTrace();
+        }
+        return dest;
 
     }
 }
