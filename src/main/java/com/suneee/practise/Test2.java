@@ -76,16 +76,6 @@ public class Test2 {
         System.out.println(  studentMapArr.get("ss2").get("s2").getAge() );
 
         List<Student> studentsList = new ArrayList<>();
-        Student ss = new Student();
-        ss.setSid(2);
-        ss.setAge(12);
-        Student ss22 = new Student();
-        ss22.setSid(1);
-        ss22.setAge(11);
-        studentsList.add( ss );
-        studentsList.add( ss22 );
-
-
 
     }
 
