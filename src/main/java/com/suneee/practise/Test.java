@@ -15,7 +15,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Test {
-    public static void main(String[] args) throws CloneNotSupportedException {
+    public static void main(String[] args) {
 
         // 数组和集合的(类型和大小)最好同步 (String&&list.size)
         List<String> list = new ArrayList<String>(2);

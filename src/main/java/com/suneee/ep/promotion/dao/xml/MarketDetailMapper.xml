@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.suneee.ep.promotion.dao.MarketDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.suneee.ep.promotion.model.MarketDetail" >
+    <id column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="DECREASE_MONEY" property="decreaseMoney" jdbcType="DECIMAL" />
+    <result column="GRADE_CODE" property="gradeCode" jdbcType="VARCHAR" />
+    <result column="ITEM_ID" property="itemId" jdbcType="DECIMAL" />
+    <result column="RATE" property="rate" jdbcType="DECIMAL" />
+    <result column="ACTIVITY_ID" property="activityId" jdbcType="VARCHAR" />
+    <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="DETAIL_ID" property="detailId" jdbcType="DECIMAL" />
+    <result column="STATUS" property="status" jdbcType="DECIMAL" />
+    <result column="IS_DELETE_SUCCESS" property="isDeleteSuccess" jdbcType="VARCHAR" />
+    <result column="IS_CREATE_SUCCESS" property="isCreateSuccess" jdbcType="VARCHAR" />
+    <result column="UPDATE_DATE" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="OPR_PERSON" property="oprPerson" jdbcType="VARCHAR" />
+    <result column="OUTER_ID" property="outerId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, DECREASE_MONEY, GRADE_CODE, ITEM_ID, RATE, ACTIVITY_ID, CREATE_DATE, DETAIL_ID, 
+    STATUS, IS_DELETE_SUCCESS, IS_CREATE_SUCCESS, UPDATE_DATE, OPR_PERSON, OUTER_ID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from WTC_TMALL_MARKET_DETAIL_T
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
+    delete from WTC_TMALL_MARKET_DETAIL_T
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.suneee.ep.promotion.model.MarketDetail" >
+    insert into WTC_TMALL_MARKET_DETAIL_T (ID, DECREASE_MONEY, GRADE_CODE, 
+      ITEM_ID, RATE, ACTIVITY_ID, 
+      CREATE_DATE, DETAIL_ID, STATUS, 
+      IS_DELETE_SUCCESS, IS_CREATE_SUCCESS, UPDATE_DATE, 
+      OPR_PERSON, OUTER_ID)
+    values (#{id,jdbcType=DECIMAL}, #{decreaseMoney,jdbcType=DECIMAL}, #{gradeCode,jdbcType=VARCHAR}, 
+      #{itemId,jdbcType=DECIMAL}, #{rate,jdbcType=DECIMAL}, #{activityId,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{detailId,jdbcType=DECIMAL}, #{status,jdbcType=DECIMAL}, 
+      #{isDeleteSuccess,jdbcType=VARCHAR}, #{isCreateSuccess,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, 
+      #{oprPerson,jdbcType=VARCHAR}, #{outerId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.suneee.ep.promotion.model.MarketDetail" >
+    insert into WTC_TMALL_MARKET_DETAIL_T
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="decreaseMoney != null" >
+        DECREASE_MONEY,
+      </if>
+      <if test="gradeCode != null" >
+        GRADE_CODE,
+      </if>
+      <if test="itemId != null" >
+        ITEM_ID,
+      </if>
+      <if test="rate != null" >
+        RATE,
+      </if>
+      <if test="activityId != null" >
+        ACTIVITY_ID,
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE,
+      </if>
+      <if test="detailId != null" >
+        DETAIL_ID,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="isDeleteSuccess != null" >
+        IS_DELETE_SUCCESS,
+      </if>
+      <if test="isCreateSuccess != null" >
+        IS_CREATE_SUCCESS,
+      </if>
+      <if test="updateDate != null" >
+        UPDATE_DATE,
+      </if>
+      <if test="oprPerson != null" >
+        OPR_PERSON,
+      </if>
+      <if test="outerId != null" >
+        OUTER_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="decreaseMoney != null" >
+        #{decreaseMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="gradeCode != null" >
+        #{gradeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itemId != null" >
+        #{itemId,jdbcType=DECIMAL},
+      </if>
+      <if test="rate != null" >
+        #{rate,jdbcType=DECIMAL},
+      </if>
+      <if test="activityId != null" >
+        #{activityId,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="detailId != null" >
+        #{detailId,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="isDeleteSuccess != null" >
+        #{isDeleteSuccess,jdbcType=VARCHAR},
+      </if>
+      <if test="isCreateSuccess != null" >
+        #{isCreateSuccess,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oprPerson != null" >
+        #{oprPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="outerId != null" >
+        #{outerId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.suneee.ep.promotion.model.MarketDetail" >
+    update WTC_TMALL_MARKET_DETAIL_T
+    <set >
+      <if test="decreaseMoney != null" >
+        DECREASE_MONEY = #{decreaseMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="gradeCode != null" >
+        GRADE_CODE = #{gradeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itemId != null" >
+        ITEM_ID = #{itemId,jdbcType=DECIMAL},
+      </if>
+      <if test="rate != null" >
+        RATE = #{rate,jdbcType=DECIMAL},
+      </if>
+      <if test="activityId != null" >
+        ACTIVITY_ID = #{activityId,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="detailId != null" >
+        DETAIL_ID = #{detailId,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="isDeleteSuccess != null" >
+        IS_DELETE_SUCCESS = #{isDeleteSuccess,jdbcType=VARCHAR},
+      </if>
+      <if test="isCreateSuccess != null" >
+        IS_CREATE_SUCCESS = #{isCreateSuccess,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oprPerson != null" >
+        OPR_PERSON = #{oprPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="outerId != null" >
+        OUTER_ID = #{outerId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.suneee.ep.promotion.model.MarketDetail" >
+    update WTC_TMALL_MARKET_DETAIL_T
+    set DECREASE_MONEY = #{decreaseMoney,jdbcType=DECIMAL},
+      GRADE_CODE = #{gradeCode,jdbcType=VARCHAR},
+      ITEM_ID = #{itemId,jdbcType=DECIMAL},
+      RATE = #{rate,jdbcType=DECIMAL},
+      ACTIVITY_ID = #{activityId,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      DETAIL_ID = #{detailId,jdbcType=DECIMAL},
+      STATUS = #{status,jdbcType=DECIMAL},
+      IS_DELETE_SUCCESS = #{isDeleteSuccess,jdbcType=VARCHAR},
+      IS_CREATE_SUCCESS = #{isCreateSuccess,jdbcType=VARCHAR},
+      UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP},
+      OPR_PERSON = #{oprPerson,jdbcType=VARCHAR},
+      OUTER_ID = #{outerId,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>
