@@ -61,7 +61,6 @@ public class Test {
         }
 
 
-//        System.out.println( String.format("mall_goods:%s:%s:%s","1234545","NJXS","1613") );
 
     }
 
