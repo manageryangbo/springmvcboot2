@@ -68,7 +68,6 @@ public class Test {
             System.out.println("==");
         }
 
-        cloneTest();
     }
 
     public static void cloneTest() throws CloneNotSupportedException {
