@@ -2,8 +2,8 @@ package com.utils;
 
 import com.alibaba.fastjson.JSON;
 import com.esotericsoftware.reflectasm.MethodAccess;
-import com.suneee.disneymall.common.exception.DataParseException;
-import com.suneee.disneymall.common.exception.InstanceException;
+import com.utils.exception.DataParseException;
+import com.utils.exception.InstanceException;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -256,7 +256,7 @@ public final class InstanceUtil {
      *
      * @param cls
      *            实体类
-     * @param list
+     * @param rs
      *            数据查询结果集
      * @return
      */
@@ -284,7 +284,7 @@ public final class InstanceUtil {
      *
      * @param cls
      *            实体类
-     * @param list
+     * @param map
      *            实体属性Map
      * @return
      */

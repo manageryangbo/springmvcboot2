@@ -1,6 +1,6 @@
 package com.utils.content;
 
-import com.utils.Page;
+import com.baomidou.mybatisplus.plugins.Page;
 import org.apache.http.HttpStatus;
 
 import java.util.HashMap;
