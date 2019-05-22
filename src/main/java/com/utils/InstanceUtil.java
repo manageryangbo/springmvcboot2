@@ -536,7 +536,7 @@ public final class InstanceUtil {
     }
 
     /**
-     * @param split
+     * @param
      * @return
      */
     public static <E> Set<E> newHashSet(E[] e) {
