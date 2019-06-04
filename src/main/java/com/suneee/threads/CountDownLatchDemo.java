@@ -3,7 +3,9 @@
  * FileName: CountDownLatchDemo
  * Author:   martin
  * Date:     2018/8/30 15:08
- * Description: 实现所有线程等待某个事件发生才会执行
+ * Description:
+ *              CountDownLatch 【共享锁】
+ *              实现所有线程等待某个事件发生才会执行
  *              mainThread.join(aThread); 执行后面的操作
  * History:
  * <author>          <time>          <version>          <desc>
@@ -16,21 +18,21 @@ import java.util.concurrent.ForkJoinTask;
 
 public class CountDownLatchDemo {
     /**
-     * 模拟爸爸去饭店
+     * 模拟爸爸去公司
      */
     public static void fatherToCompany() {
         System.out.println("爸爸步行去公司。");
     }
 
     /**
-     * 模拟我去饭店
+     * 模拟妈妈挤公交去商场
      */
     public static void motherToShopping() {
         System.out.println("妈妈挤公交去商场。");
     }
 
     /**
-     * 模拟妈妈去饭店
+     * 模拟我乘地铁回家
      */
     public static void meToHome() {
         System.out.println("我乘地铁回家。");
@@ -113,7 +115,6 @@ public class CountDownLatchDemo {
                 latch.countDown();
             };
         }.start();
-//        latch.countDown();
         System.out.println("=======结束========");
     }
 }
