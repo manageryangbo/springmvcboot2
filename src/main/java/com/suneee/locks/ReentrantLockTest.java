@@ -4,6 +4,7 @@
  * Author:   martin
  * Date:     2019/6/3 17:13
  * Description:
+ *         ReentrantLock触发死锁案例
  * History:
  * <author>          <time>          <version>          <desc>
  * 作者姓名          修改时间          版本号            描述
@@ -37,7 +38,7 @@ public class ReentrantLockTest {
         public void run() {
             try {
                 firstLock.lockInterruptibly();
-                TimeUnit.MILLISECONDS.sleep(10);//更好的触发死锁
+                TimeUnit.MILLISECONDS.sleep(10);//更好的触发死锁【为了让第一个线程拿第一把锁，第二个线程拿到第二把锁】
                 secondLock.lockInterruptibly();
 
 //                firstLock.lock();

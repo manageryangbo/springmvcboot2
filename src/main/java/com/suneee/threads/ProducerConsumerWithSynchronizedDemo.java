@@ -10,11 +10,16 @@
  */
 package com.suneee.threads;
 
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+
 public class ProducerConsumerWithSynchronizedDemo {
     public static void main(String[] args) {
         ProductFactoryWithSynchronized productFactory = new ProductFactoryWithSynchronized(10);
         new Thread(new ProducerWithSynchronized(productFactory),"1号生产者").start();
         new Thread(new ConsumerWithSynchronized(productFactory),"1号消费者").start();
         new Thread(new ConsumerWithSynchronized(productFactory),"2号消费者").start();
+        ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(2);
     }
 }

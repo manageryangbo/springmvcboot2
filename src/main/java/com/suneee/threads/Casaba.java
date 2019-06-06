@@ -37,7 +37,7 @@ public class Casaba {
                         e.printStackTrace();
                     }
                     boolean c3 = atomicInt.compareAndSet(100, 101);
-                    System.out.println(c3);        //true
+                    System.out.println(c3);        //true 表示被intT1线程改动的对象【100=>101=>100】，还是能正常修改，导致ABA【本应该修改失败false】
                 }
             });
 
@@ -65,15 +65,15 @@ public class Casaba {
                 @Override
                 public void run() {
                     int stamp = atomicStampedRef.getStamp();
-                    System.out.println("before sleep : stamp = " + stamp);    // stamp = 0
+                    System.out.println("before sleep : stamp value= " + stamp);    // stamp = 0
                     try {
                         TimeUnit.SECONDS.sleep(2);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    System.out.println("after sleep : stamp = " + atomicStampedRef.getStamp());//stamp = 1
+                    System.out.println("after sleep : stamp value= " + atomicStampedRef.getStamp());//stamp = 1
                     boolean c3 = atomicStampedRef.compareAndSet(100, 101, stamp, stamp+1);
-                    System.out.println(c3);        //false
+                    System.out.println(c3);        //false【AtomicStampedReference解决了CAS导致的ABA问题】
                 }
             });
 
