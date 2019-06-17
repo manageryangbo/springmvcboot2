@@ -77,6 +77,25 @@ public class Test2 {
 
         List<Student> studentsList = new ArrayList<>();
 
+
+        /**
+         * Arrays.asList()的使用误区，转换成数组集合是Arrays的内部类ArrayList
+         */
+        int[] intArray = {1,2,3};
+        List<int[]> asList = Arrays.asList(intArray);
+        System.out.println( "asList.size:" + asList.size() );  // 输出长度为1【debug调试结果Arrays$ArrayList，Arrays长度为1】  如果是Integer类型，则正常输出长度:3
+
+        String [] arr = {"欢迎","学习","java"};
+        List<String> stringAsList = Arrays.asList(arr);  // 只是复制了地址
+        arr[1] = "请教";
+        stringAsList.set(2,"php");
+        System.out.println( Arrays.toString( arr ) );
+        System.out.println( stringAsList.toString() );
+
+        stringAsList.add("python");  // java.lang.UnsupportedOperationException
+        stringAsList.remove( "欢迎" ); //java.lang.UnsupportedOperationException
+        System.out.println( stringAsList.toString() );
+
     }
 
     public static void resetStudentList(List<Student> studentList){

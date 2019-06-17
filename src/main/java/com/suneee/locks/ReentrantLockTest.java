@@ -37,13 +37,13 @@ public class ReentrantLockTest {
         @Override
         public void run() {
             try {
-                firstLock.lockInterruptibly();
-                TimeUnit.MILLISECONDS.sleep(10);//更好的触发死锁【为了让第一个线程拿第一把锁，第二个线程拿到第二把锁】
-                secondLock.lockInterruptibly();
+//                firstLock.lockInterruptibly();
+//                TimeUnit.MILLISECONDS.sleep(10);//更好的触发死锁【为了让第一个线程拿第一把锁，第二个线程拿到第二把锁】
+//                secondLock.lockInterruptibly();
 
-//                firstLock.lock();
-//                TimeUnit.MILLISECONDS.sleep(10);//更好的触发死锁
-//                secondLock.lock();
+                firstLock.lock();
+                TimeUnit.MILLISECONDS.sleep(100);//更好的触发死锁
+                secondLock.lock();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } finally {
