@@ -48,7 +48,7 @@ public class CallableSums {
 //            public void run() {     System.out.println("=================submit");  }
 //        });
 //        submitRunnable.get(); // 返回null对象
-//        Future<Long> submit = executorService.submit(new CallableSum(0, 10));
+        Future<Long> submit = executorService.submit(new CallableSum(0, 10));
         List<Future<Long>> results = executorService.invokeAll(Arrays.asList(
                 new CallableSum(0, 10), new CallableSum(0, 1_000), new CallableSum(0, 1_000_000), new CallableSum(0, 1_000_100)
         ));
