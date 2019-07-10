@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,6 +31,8 @@ public class YangboApplication {
 
 	@RequestMapping("/")
 	public String hello(){
+		ApplicationContext  applicationContext= new ClassPathXmlApplicationContext();
+		applicationContext.getBean("com.abcd");
 		updateLastRedisSearchKeyword(485003,"常用酒店");
 		return "hello yangbo05527 world";
 	}

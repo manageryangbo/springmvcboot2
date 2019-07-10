@@ -3,7 +3,7 @@
  * FileName: MyInvocationHandler
  * Author:   martin
  * Date:     2018/5/17 14:32
- * Description: 实现自己的InvocationHandler
+ * Description: 动态代理实现自己的InvocationHandler
  * History:
  * <author>          <time>          <version>          <desc>
  * 作者姓名          修改时间          版本号            描述
@@ -36,13 +36,13 @@ public class MyInvocationHandler implements InvocationHandler {
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 
         // 在目标对象的方法执行之前简单的打印一下
-        System.out.println("------------------before------------------");
+        System.out.println("-----------------jdk的动态代理 before------------------");
 
         // 执行目标对象的方法
         Object result = method.invoke(target, args);
 
         // 在目标对象的方法执行之后简单的打印一下
-        System.out.println("-------------------after------------------");
+        System.out.println("-------------------jdk的动态代理 after------------------");
 
         return result;
     }

@@ -15,7 +15,6 @@ public class Test {
     public static void main(String[] args) {
         Target t = new ClassAdapter();
         t.sampleOperation1();  // 达到类适配器的效果(Adaptee类的接口变换成客户端所期待的另一种Target接口)
-
         Target2 t2 = new ObjectAdapter( new Adaptee() );
         t2.sampleOperation1();// 达到对象适配器的效果(Adaptee类的接口变换成客户端所期待的另一种Target接口)
         t2.sampleOperation2();

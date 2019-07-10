@@ -60,6 +60,7 @@ public class TestLambdaProperty {
         appList.stream().sorted( reversedComparator );
         Function<App,Integer> f3 = (App a)->a.getWeight();
         Predicate<App> p = (App a)->a.getWeight()>150;
+        boolean test = p.test(app4);
 
     }
 }
