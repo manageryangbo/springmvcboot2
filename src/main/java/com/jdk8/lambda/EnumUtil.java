@@ -45,6 +45,32 @@ public class EnumUtil {
     public static void main(String[] args) {
         int freeGoods = 8;
         EnumUtil.getEnumObject(GoodsTypeEnum.class,tmp -> tmp.getType().equals(freeGoods)).getTypeName();
+        switch ( EnumUtil.getEnumObject(GoodsTypeEnum.class,tmp -> tmp.getType().equals(freeGoods)) ){
+            case GENERAL_TYPE:
+                System.out.println( GoodsTypeEnum.GENERAL_TYPE.getTypeName()  );
+                break;
+            case RAW_MATERIAL_TYPE:
+                System.out.println( GoodsTypeEnum.RAW_MATERIAL_TYPE.getTypeName()  );
+                break;
+            case CONSUMABLES_TYPE:
+                System.out.println( GoodsTypeEnum.CONSUMABLES_TYPE.getTypeName()  );
+                break;
+            case WEIGHT_BY_ONE_TYPE:
+                System.out.println( GoodsTypeEnum.WEIGHT_BY_ONE_TYPE.getTypeName()  );
+                break;
+            case WEIGHT_BY_SALE_TYPE:
+                System.out.println( GoodsTypeEnum.WEIGHT_BY_SALE_TYPE.getTypeName()  );
+                break;
+            case SHOPPING_BAG_TYPE:
+                System.out.println( GoodsTypeEnum.SHOPPING_BAG_TYPE.getTypeName()  );
+                break;
+            case DISH_TYPE:
+                System.out.println( GoodsTypeEnum.DISH_TYPE.getTypeName()  );
+                break;
+            default:
+                System.out.println( GoodsTypeEnum.DISH_TYPE.getTypeName()  );
+                break;
+        }
     }
 
 }

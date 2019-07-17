@@ -32,9 +32,8 @@ public class SortTest {
 
         int[] ints3 = new int[]{2,9,6,1,5,8,4,3};
         SortUtil.selectorSortAsc( ints3 );
-        System.out.println( "2-最终结果:" + Arrays.toString(ints3));
+        System.out.println( "3-最终结果:" + Arrays.toString(ints3));
         System.out.println( "循环次数:"+SortUtil.totalCount + "交换次数:"+SortUtil.changeCount );
-
 
     }
 }
