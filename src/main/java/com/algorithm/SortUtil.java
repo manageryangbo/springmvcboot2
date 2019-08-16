@@ -60,7 +60,7 @@ public class SortUtil {
     }
 
     /**
-     * 选择排序算法[顺势]【将轮询范围内的查出最小值与最前面的位置的值做交换，】
+     * 选择排序算法[顺势]【将轮询范围内的查出最小值插入到最前端，】
      * @param array
      */
     public static void selectorSortAsc(int[] array){
