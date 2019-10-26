@@ -79,9 +79,9 @@ public class SortUtil {
             array[i] = temp ;
             changeCount ++ ;
             System.out.println(  Arrays.toString( array ) );  // 逆势打印效果
+            System.out.println("===========");
         }
     }
-
 
     /**
      * 插入排序算法【将当前的值插入到合适的位置如:67985，8需插入到79之间】
