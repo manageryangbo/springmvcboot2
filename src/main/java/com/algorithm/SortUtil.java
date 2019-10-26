@@ -12,12 +12,15 @@
 package com.algorithm;
 
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 import java.util.Arrays;
 
 public class SortUtil {
 
     public static int totalCount = 0 ; // 计数器
     public static int changeCount = 0 ; // 交换计数
+
 
     /**
      * 冒泡排序算法[顺势]
@@ -96,6 +99,20 @@ public class SortUtil {
             array[j+1] = insertValue;
             System.out.println(  Arrays.toString( array ) );  // 逆势打印效果
         }
+    }
+
+    public static void main(String[] args ) throws Exception {
+            FileOutputStream  fileOutputStream = new FileOutputStream("D://test.txt");
+            fileOutputStream.write("holle".getBytes());
+            fileOutputStream.close();
+//            File file = new File("D://test.txt");
+//            response.setHeader("Content-Disposition","attachment;filename=" + new String("ab".getBytes()));
+//            response.addHeader("Content-Length", "" + file.length());
+//            response.setContentType("application/octet-stream");
+//            OutputStream toClient = new BufferedOutputStream(response.getOutputStream());
+//            OutputStream os = response.getOutputStream();
+//            toClient.write("sd".getBytes());
+//            toClient.close();
     }
 
 }
