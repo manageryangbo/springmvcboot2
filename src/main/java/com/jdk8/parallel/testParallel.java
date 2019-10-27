@@ -32,6 +32,7 @@ public class testParallel {
          * 3 rangedClosed(1,n)解决了拆箱和不能分块的问题
          */
 
+
         Long count = 10000L ;
         TPredicate<String> tPredicateInner = new TPredicate<String>() {
             @Override
@@ -42,6 +43,7 @@ public class testParallel {
                 return s.contains("s");
             }
         };
+
         tPredicateInner.effect("ssss");
         TPredicate<String> tPredicateLambda = (String s) -> {
 

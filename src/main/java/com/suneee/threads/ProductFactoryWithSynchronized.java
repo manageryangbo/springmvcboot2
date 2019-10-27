@@ -12,6 +12,8 @@ package com.suneee.threads;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.FutureTask;
 
 public class ProductFactoryWithSynchronized {
 
@@ -54,4 +56,6 @@ public class ProductFactoryWithSynchronized {
         notify();  //随机唤起一个线程
         return product;
     }
+
+
 }

@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.marketcenter.dao.PromotionalDao" >
+  <resultMap id="BaseResultMap" type="com.marketcenter.dbo.Promotional" >
+    <id column="prom_id" property="promId" jdbcType="INTEGER" />
+    <result column="enterprise_code" property="enterpriseCode" jdbcType="VARCHAR" />
+    <result column="prom_name" property="promName" jdbcType="VARCHAR" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="vip_level" property="vipLevel" jdbcType="VARCHAR" />
+    <result column="use_platform" property="usePlatform" jdbcType="VARCHAR" />
+    <result column="sale_type" property="saleType" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="full_condition" property="fullCondition" jdbcType="SMALLINT" />
+    <result column="batch_special_price" property="batchSpecialPrice" jdbcType="NUMERIC" />
+    <result column="batch_reduce_price" property="batchReducePrice" jdbcType="NUMERIC" />
+    <result column="full_element" property="fullElement" jdbcType="NUMERIC" />
+    <result column="each_full_money" property="eachFullMoney" jdbcType="NUMERIC" />
+    <result column="limits" property="limits" jdbcType="SMALLINT" />
+    <result column="each_single" property="eachSingle" jdbcType="INTEGER" />
+    <result column="minus_money" property="minusMoney" jdbcType="NUMERIC" />
+    <result column="change_buy_limit" property="changeBuyLimit" jdbcType="INTEGER" />
+    <result column="touching_user" property="touchingUser" jdbcType="VARCHAR" />
+    <result column="touching_time" property="touchingTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_user" property="auditorUser" jdbcType="VARCHAR" />
+    <result column="auditor_time" property="auditorTime" jdbcType="TIMESTAMP" />
+    <result column="releases" property="releases" jdbcType="SMALLINT" />
+    <result column="release_time" property="releaseTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_status" property="auditorStatus" jdbcType="SMALLINT" />
+    <result column="pref_range" property="prefRange" jdbcType="SMALLINT" />
+    <result column="pref_way" property="prefWay" jdbcType="SMALLINT" />
+    <result column="each_full_num" property="eachFullNum" jdbcType="INTEGER" />
+    <result column="minus_num" property="minusNum" jdbcType="INTEGER" />
+    <result column="prom_code" property="promCode" jdbcType="VARCHAR" />
+    <result column="deleted" property="deleted" jdbcType="SMALLINT" />
+    <result column="batch_type" property="batchType" jdbcType="SMALLINT" />
+    <result column="minus_sale" property="minusSale" jdbcType="NUMERIC" />
+    <result column="minus_type" property="minusType" jdbcType="SMALLINT" />
+    <result column="limit_quota_price" property="limitQuotaPrice" jdbcType="NUMERIC" />
+    <result column="batch_discount" property="batchDiscount" jdbcType="NUMERIC" />
+    <result column="discount" property="discount" jdbcType="NUMERIC" />
+    <result column="audit_opinion" property="auditOpinion" jdbcType="VARCHAR" />
+    <result column="enterprise_id" property="enterpriseId" jdbcType="INTEGER" />
+    <result column="time_limit_status" property="timeLimitStatus" jdbcType="SMALLINT" />
+    <result column="time_limit_start" property="timeLimitStart" jdbcType="TIME" />
+    <result column="time_limit_end" property="timeLimitEnd" jdbcType="TIME" />
+    <result column="store_id" property="storeId" jdbcType="INTEGER" />
+    <result column="store_code" property="storeCode" jdbcType="VARCHAR" />
+    <result column="each_piece_money" property="eachPieceMoney" jdbcType="NUMERIC" />
+    <result column="the_pieces_discount" property="thePiecesDiscount" jdbcType="NUMERIC" />
+    <result column="slogan" property="slogan" jdbcType="VARCHAR" />
+    <result column="priority" property="priority" jdbcType="INTEGER" />
+    <result column="total_limit" property="totalLimit" jdbcType="SMALLINT" />
+    <result column="daily_limit" property="dailyLimit" jdbcType="SMALLINT" />
+    <result column="people_limit" property="peopleLimit" jdbcType="SMALLINT" />
+    <result column="daily_people_limit" property="dailyPeopleLimit" jdbcType="SMALLINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    prom_id, enterprise_code, prom_name, start_time, end_time, vip_level, use_platform, 
+    sale_type, remark, full_condition, batch_special_price, batch_reduce_price, full_element, 
+    each_full_money, limits, each_single, minus_money, change_buy_limit, touching_user, 
+    touching_time, auditor_user, auditor_time, releases, release_time, auditor_status, 
+    pref_range, pref_way, each_full_num, minus_num, prom_code, deleted, batch_type, minus_sale, 
+    minus_type, limit_quota_price, batch_discount, discount, audit_opinion, enterprise_id, 
+    time_limit_status, time_limit_start, time_limit_end, store_id, store_code, each_piece_money, 
+    the_pieces_discount, slogan, priority, total_limit, daily_limit, people_limit, daily_people_limit
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_promotional
+    where prom_id = #{promId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_promotional
+    where prom_id = #{promId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.marketcenter.dbo.Promotional" >
+    insert into t_promotional (prom_id, enterprise_code, prom_name, 
+      start_time, end_time, vip_level, 
+      use_platform, sale_type, remark, 
+      full_condition, batch_special_price, batch_reduce_price, 
+      full_element, each_full_money, limits, 
+      each_single, minus_money, change_buy_limit, 
+      touching_user, touching_time, auditor_user, 
+      auditor_time, releases, release_time, 
+      auditor_status, pref_range, pref_way, 
+      each_full_num, minus_num, prom_code, 
+      deleted, batch_type, minus_sale, 
+      minus_type, limit_quota_price, batch_discount, 
+      discount, audit_opinion, enterprise_id, 
+      time_limit_status, time_limit_start, time_limit_end, 
+      store_id, store_code, each_piece_money, 
+      the_pieces_discount, slogan, priority, 
+      total_limit, daily_limit, people_limit, 
+      daily_people_limit)
+    values (#{promId,jdbcType=INTEGER}, #{enterpriseCode,jdbcType=VARCHAR}, #{promName,jdbcType=VARCHAR}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{vipLevel,jdbcType=VARCHAR}, 
+      #{usePlatform,jdbcType=VARCHAR}, #{saleType,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{fullCondition,jdbcType=SMALLINT}, #{batchSpecialPrice,jdbcType=NUMERIC}, #{batchReducePrice,jdbcType=NUMERIC}, 
+      #{fullElement,jdbcType=NUMERIC}, #{eachFullMoney,jdbcType=NUMERIC}, #{limits,jdbcType=SMALLINT}, 
+      #{eachSingle,jdbcType=INTEGER}, #{minusMoney,jdbcType=NUMERIC}, #{changeBuyLimit,jdbcType=INTEGER}, 
+      #{touchingUser,jdbcType=VARCHAR}, #{touchingTime,jdbcType=TIMESTAMP}, #{auditorUser,jdbcType=VARCHAR}, 
+      #{auditorTime,jdbcType=TIMESTAMP}, #{releases,jdbcType=SMALLINT}, #{releaseTime,jdbcType=TIMESTAMP}, 
+      #{auditorStatus,jdbcType=SMALLINT}, #{prefRange,jdbcType=SMALLINT}, #{prefWay,jdbcType=SMALLINT}, 
+      #{eachFullNum,jdbcType=INTEGER}, #{minusNum,jdbcType=INTEGER}, #{promCode,jdbcType=VARCHAR}, 
+      #{deleted,jdbcType=SMALLINT}, #{batchType,jdbcType=SMALLINT}, #{minusSale,jdbcType=NUMERIC}, 
+      #{minusType,jdbcType=SMALLINT}, #{limitQuotaPrice,jdbcType=NUMERIC}, #{batchDiscount,jdbcType=NUMERIC}, 
+      #{discount,jdbcType=NUMERIC}, #{auditOpinion,jdbcType=VARCHAR}, #{enterpriseId,jdbcType=INTEGER}, 
+      #{timeLimitStatus,jdbcType=SMALLINT}, #{timeLimitStart,jdbcType=TIME}, #{timeLimitEnd,jdbcType=TIME}, 
+      #{storeId,jdbcType=INTEGER}, #{storeCode,jdbcType=VARCHAR}, #{eachPieceMoney,jdbcType=NUMERIC}, 
+      #{thePiecesDiscount,jdbcType=NUMERIC}, #{slogan,jdbcType=VARCHAR}, #{priority,jdbcType=INTEGER}, 
+      #{totalLimit,jdbcType=SMALLINT}, #{dailyLimit,jdbcType=SMALLINT}, #{peopleLimit,jdbcType=SMALLINT}, 
+      #{dailyPeopleLimit,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.marketcenter.dbo.Promotional" >
+    insert into t_promotional
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="promId != null" >
+        prom_id,
+      </if>
+      <if test="enterpriseCode != null" >
+        enterprise_code,
+      </if>
+      <if test="promName != null" >
+        prom_name,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="vipLevel != null" >
+        vip_level,
+      </if>
+      <if test="usePlatform != null" >
+        use_platform,
+      </if>
+      <if test="saleType != null" >
+        sale_type,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="fullCondition != null" >
+        full_condition,
+      </if>
+      <if test="batchSpecialPrice != null" >
+        batch_special_price,
+      </if>
+      <if test="batchReducePrice != null" >
+        batch_reduce_price,
+      </if>
+      <if test="fullElement != null" >
+        full_element,
+      </if>
+      <if test="eachFullMoney != null" >
+        each_full_money,
+      </if>
+      <if test="limits != null" >
+        limits,
+      </if>
+      <if test="eachSingle != null" >
+        each_single,
+      </if>
+      <if test="minusMoney != null" >
+        minus_money,
+      </if>
+      <if test="changeBuyLimit != null" >
+        change_buy_limit,
+      </if>
+      <if test="touchingUser != null" >
+        touching_user,
+      </if>
+      <if test="touchingTime != null" >
+        touching_time,
+      </if>
+      <if test="auditorUser != null" >
+        auditor_user,
+      </if>
+      <if test="auditorTime != null" >
+        auditor_time,
+      </if>
+      <if test="releases != null" >
+        releases,
+      </if>
+      <if test="releaseTime != null" >
+        release_time,
+      </if>
+      <if test="auditorStatus != null" >
+        auditor_status,
+      </if>
+      <if test="prefRange != null" >
+        pref_range,
+      </if>
+      <if test="prefWay != null" >
+        pref_way,
+      </if>
+      <if test="eachFullNum != null" >
+        each_full_num,
+      </if>
+      <if test="minusNum != null" >
+        minus_num,
+      </if>
+      <if test="promCode != null" >
+        prom_code,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+      <if test="batchType != null" >
+        batch_type,
+      </if>
+      <if test="minusSale != null" >
+        minus_sale,
+      </if>
+      <if test="minusType != null" >
+        minus_type,
+      </if>
+      <if test="limitQuotaPrice != null" >
+        limit_quota_price,
+      </if>
+      <if test="batchDiscount != null" >
+        batch_discount,
+      </if>
+      <if test="discount != null" >
+        discount,
+      </if>
+      <if test="auditOpinion != null" >
+        audit_opinion,
+      </if>
+      <if test="enterpriseId != null" >
+        enterprise_id,
+      </if>
+      <if test="timeLimitStatus != null" >
+        time_limit_status,
+      </if>
+      <if test="timeLimitStart != null" >
+        time_limit_start,
+      </if>
+      <if test="timeLimitEnd != null" >
+        time_limit_end,
+      </if>
+      <if test="storeId != null" >
+        store_id,
+      </if>
+      <if test="storeCode != null" >
+        store_code,
+      </if>
+      <if test="eachPieceMoney != null" >
+        each_piece_money,
+      </if>
+      <if test="thePiecesDiscount != null" >
+        the_pieces_discount,
+      </if>
+      <if test="slogan != null" >
+        slogan,
+      </if>
+      <if test="priority != null" >
+        priority,
+      </if>
+      <if test="totalLimit != null" >
+        total_limit,
+      </if>
+      <if test="dailyLimit != null" >
+        daily_limit,
+      </if>
+      <if test="peopleLimit != null" >
+        people_limit,
+      </if>
+      <if test="dailyPeopleLimit != null" >
+        daily_people_limit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="promId != null" >
+        #{promId,jdbcType=INTEGER},
+      </if>
+      <if test="enterpriseCode != null" >
+        #{enterpriseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="promName != null" >
+        #{promName,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vipLevel != null" >
+        #{vipLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="usePlatform != null" >
+        #{usePlatform,jdbcType=VARCHAR},
+      </if>
+      <if test="saleType != null" >
+        #{saleType,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="fullCondition != null" >
+        #{fullCondition,jdbcType=SMALLINT},
+      </if>
+      <if test="batchSpecialPrice != null" >
+        #{batchSpecialPrice,jdbcType=NUMERIC},
+      </if>
+      <if test="batchReducePrice != null" >
+        #{batchReducePrice,jdbcType=NUMERIC},
+      </if>
+      <if test="fullElement != null" >
+        #{fullElement,jdbcType=NUMERIC},
+      </if>
+      <if test="eachFullMoney != null" >
+        #{eachFullMoney,jdbcType=NUMERIC},
+      </if>
+      <if test="limits != null" >
+        #{limits,jdbcType=SMALLINT},
+      </if>
+      <if test="eachSingle != null" >
+        #{eachSingle,jdbcType=INTEGER},
+      </if>
+      <if test="minusMoney != null" >
+        #{minusMoney,jdbcType=NUMERIC},
+      </if>
+      <if test="changeBuyLimit != null" >
+        #{changeBuyLimit,jdbcType=INTEGER},
+      </if>
+      <if test="touchingUser != null" >
+        #{touchingUser,jdbcType=VARCHAR},
+      </if>
+      <if test="touchingTime != null" >
+        #{touchingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditorUser != null" >
+        #{auditorUser,jdbcType=VARCHAR},
+      </if>
+      <if test="auditorTime != null" >
+        #{auditorTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="releases != null" >
+        #{releases,jdbcType=SMALLINT},
+      </if>
+      <if test="releaseTime != null" >
+        #{releaseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditorStatus != null" >
+        #{auditorStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="prefRange != null" >
+        #{prefRange,jdbcType=SMALLINT},
+      </if>
+      <if test="prefWay != null" >
+        #{prefWay,jdbcType=SMALLINT},
+      </if>
+      <if test="eachFullNum != null" >
+        #{eachFullNum,jdbcType=INTEGER},
+      </if>
+      <if test="minusNum != null" >
+        #{minusNum,jdbcType=INTEGER},
+      </if>
+      <if test="promCode != null" >
+        #{promCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=SMALLINT},
+      </if>
+      <if test="batchType != null" >
+        #{batchType,jdbcType=SMALLINT},
+      </if>
+      <if test="minusSale != null" >
+        #{minusSale,jdbcType=NUMERIC},
+      </if>
+      <if test="minusType != null" >
+        #{minusType,jdbcType=SMALLINT},
+      </if>
+      <if test="limitQuotaPrice != null" >
+        #{limitQuotaPrice,jdbcType=NUMERIC},
+      </if>
+      <if test="batchDiscount != null" >
+        #{batchDiscount,jdbcType=NUMERIC},
+      </if>
+      <if test="discount != null" >
+        #{discount,jdbcType=NUMERIC},
+      </if>
+      <if test="auditOpinion != null" >
+        #{auditOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseId != null" >
+        #{enterpriseId,jdbcType=INTEGER},
+      </if>
+      <if test="timeLimitStatus != null" >
+        #{timeLimitStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="timeLimitStart != null" >
+        #{timeLimitStart,jdbcType=TIME},
+      </if>
+      <if test="timeLimitEnd != null" >
+        #{timeLimitEnd,jdbcType=TIME},
+      </if>
+      <if test="storeId != null" >
+        #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="storeCode != null" >
+        #{storeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="eachPieceMoney != null" >
+        #{eachPieceMoney,jdbcType=NUMERIC},
+      </if>
+      <if test="thePiecesDiscount != null" >
+        #{thePiecesDiscount,jdbcType=NUMERIC},
+      </if>
+      <if test="slogan != null" >
+        #{slogan,jdbcType=VARCHAR},
+      </if>
+      <if test="priority != null" >
+        #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="totalLimit != null" >
+        #{totalLimit,jdbcType=SMALLINT},
+      </if>
+      <if test="dailyLimit != null" >
+        #{dailyLimit,jdbcType=SMALLINT},
+      </if>
+      <if test="peopleLimit != null" >
+        #{peopleLimit,jdbcType=SMALLINT},
+      </if>
+      <if test="dailyPeopleLimit != null" >
+        #{dailyPeopleLimit,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.marketcenter.dbo.Promotional" >
+    update t_promotional
+    <set >
+      <if test="enterpriseCode != null" >
+        enterprise_code = #{enterpriseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="promName != null" >
+        prom_name = #{promName,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vipLevel != null" >
+        vip_level = #{vipLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="usePlatform != null" >
+        use_platform = #{usePlatform,jdbcType=VARCHAR},
+      </if>
+      <if test="saleType != null" >
+        sale_type = #{saleType,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="fullCondition != null" >
+        full_condition = #{fullCondition,jdbcType=SMALLINT},
+      </if>
+      <if test="batchSpecialPrice != null" >
+        batch_special_price = #{batchSpecialPrice,jdbcType=NUMERIC},
+      </if>
+      <if test="batchReducePrice != null" >
+        batch_reduce_price = #{batchReducePrice,jdbcType=NUMERIC},
+      </if>
+      <if test="fullElement != null" >
+        full_element = #{fullElement,jdbcType=NUMERIC},
+      </if>
+      <if test="eachFullMoney != null" >
+        each_full_money = #{eachFullMoney,jdbcType=NUMERIC},
+      </if>
+      <if test="limits != null" >
+        limits = #{limits,jdbcType=SMALLINT},
+      </if>
+      <if test="eachSingle != null" >
+        each_single = #{eachSingle,jdbcType=INTEGER},
+      </if>
+      <if test="minusMoney != null" >
+        minus_money = #{minusMoney,jdbcType=NUMERIC},
+      </if>
+      <if test="changeBuyLimit != null" >
+        change_buy_limit = #{changeBuyLimit,jdbcType=INTEGER},
+      </if>
+      <if test="touchingUser != null" >
+        touching_user = #{touchingUser,jdbcType=VARCHAR},
+      </if>
+      <if test="touchingTime != null" >
+        touching_time = #{touchingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditorUser != null" >
+        auditor_user = #{auditorUser,jdbcType=VARCHAR},
+      </if>
+      <if test="auditorTime != null" >
+        auditor_time = #{auditorTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="releases != null" >
+        releases = #{releases,jdbcType=SMALLINT},
+      </if>
+      <if test="releaseTime != null" >
+        release_time = #{releaseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditorStatus != null" >
+        auditor_status = #{auditorStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="prefRange != null" >
+        pref_range = #{prefRange,jdbcType=SMALLINT},
+      </if>
+      <if test="prefWay != null" >
+        pref_way = #{prefWay,jdbcType=SMALLINT},
+      </if>
+      <if test="eachFullNum != null" >
+        each_full_num = #{eachFullNum,jdbcType=INTEGER},
+      </if>
+      <if test="minusNum != null" >
+        minus_num = #{minusNum,jdbcType=INTEGER},
+      </if>
+      <if test="promCode != null" >
+        prom_code = #{promCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=SMALLINT},
+      </if>
+      <if test="batchType != null" >
+        batch_type = #{batchType,jdbcType=SMALLINT},
+      </if>
+      <if test="minusSale != null" >
+        minus_sale = #{minusSale,jdbcType=NUMERIC},
+      </if>
+      <if test="minusType != null" >
+        minus_type = #{minusType,jdbcType=SMALLINT},
+      </if>
+      <if test="limitQuotaPrice != null" >
+        limit_quota_price = #{limitQuotaPrice,jdbcType=NUMERIC},
+      </if>
+      <if test="batchDiscount != null" >
+        batch_discount = #{batchDiscount,jdbcType=NUMERIC},
+      </if>
+      <if test="discount != null" >
+        discount = #{discount,jdbcType=NUMERIC},
+      </if>
+      <if test="auditOpinion != null" >
+        audit_opinion = #{auditOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseId != null" >
+        enterprise_id = #{enterpriseId,jdbcType=INTEGER},
+      </if>
+      <if test="timeLimitStatus != null" >
+        time_limit_status = #{timeLimitStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="timeLimitStart != null" >
+        time_limit_start = #{timeLimitStart,jdbcType=TIME},
+      </if>
+      <if test="timeLimitEnd != null" >
+        time_limit_end = #{timeLimitEnd,jdbcType=TIME},
+      </if>
+      <if test="storeId != null" >
+        store_id = #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="storeCode != null" >
+        store_code = #{storeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="eachPieceMoney != null" >
+        each_piece_money = #{eachPieceMoney,jdbcType=NUMERIC},
+      </if>
+      <if test="thePiecesDiscount != null" >
+        the_pieces_discount = #{thePiecesDiscount,jdbcType=NUMERIC},
+      </if>
+      <if test="slogan != null" >
+        slogan = #{slogan,jdbcType=VARCHAR},
+      </if>
+      <if test="priority != null" >
+        priority = #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="totalLimit != null" >
+        total_limit = #{totalLimit,jdbcType=SMALLINT},
+      </if>
+      <if test="dailyLimit != null" >
+        daily_limit = #{dailyLimit,jdbcType=SMALLINT},
+      </if>
+      <if test="peopleLimit != null" >
+        people_limit = #{peopleLimit,jdbcType=SMALLINT},
+      </if>
+      <if test="dailyPeopleLimit != null" >
+        daily_people_limit = #{dailyPeopleLimit,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where prom_id = #{promId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.marketcenter.dbo.Promotional" >
+    update t_promotional
+    set enterprise_code = #{enterpriseCode,jdbcType=VARCHAR},
+      prom_name = #{promName,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      vip_level = #{vipLevel,jdbcType=VARCHAR},
+      use_platform = #{usePlatform,jdbcType=VARCHAR},
+      sale_type = #{saleType,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      full_condition = #{fullCondition,jdbcType=SMALLINT},
+      batch_special_price = #{batchSpecialPrice,jdbcType=NUMERIC},
+      batch_reduce_price = #{batchReducePrice,jdbcType=NUMERIC},
+      full_element = #{fullElement,jdbcType=NUMERIC},
+      each_full_money = #{eachFullMoney,jdbcType=NUMERIC},
+      limits = #{limits,jdbcType=SMALLINT},
+      each_single = #{eachSingle,jdbcType=INTEGER},
+      minus_money = #{minusMoney,jdbcType=NUMERIC},
+      change_buy_limit = #{changeBuyLimit,jdbcType=INTEGER},
+      touching_user = #{touchingUser,jdbcType=VARCHAR},
+      touching_time = #{touchingTime,jdbcType=TIMESTAMP},
+      auditor_user = #{auditorUser,jdbcType=VARCHAR},
+      auditor_time = #{auditorTime,jdbcType=TIMESTAMP},
+      releases = #{releases,jdbcType=SMALLINT},
+      release_time = #{releaseTime,jdbcType=TIMESTAMP},
+      auditor_status = #{auditorStatus,jdbcType=SMALLINT},
+      pref_range = #{prefRange,jdbcType=SMALLINT},
+      pref_way = #{prefWay,jdbcType=SMALLINT},
+      each_full_num = #{eachFullNum,jdbcType=INTEGER},
+      minus_num = #{minusNum,jdbcType=INTEGER},
+      prom_code = #{promCode,jdbcType=VARCHAR},
+      deleted = #{deleted,jdbcType=SMALLINT},
+      batch_type = #{batchType,jdbcType=SMALLINT},
+      minus_sale = #{minusSale,jdbcType=NUMERIC},
+      minus_type = #{minusType,jdbcType=SMALLINT},
+      limit_quota_price = #{limitQuotaPrice,jdbcType=NUMERIC},
+      batch_discount = #{batchDiscount,jdbcType=NUMERIC},
+      discount = #{discount,jdbcType=NUMERIC},
+      audit_opinion = #{auditOpinion,jdbcType=VARCHAR},
+      enterprise_id = #{enterpriseId,jdbcType=INTEGER},
+      time_limit_status = #{timeLimitStatus,jdbcType=SMALLINT},
+      time_limit_start = #{timeLimitStart,jdbcType=TIME},
+      time_limit_end = #{timeLimitEnd,jdbcType=TIME},
+      store_id = #{storeId,jdbcType=INTEGER},
+      store_code = #{storeCode,jdbcType=VARCHAR},
+      each_piece_money = #{eachPieceMoney,jdbcType=NUMERIC},
+      the_pieces_discount = #{thePiecesDiscount,jdbcType=NUMERIC},
+      slogan = #{slogan,jdbcType=VARCHAR},
+      priority = #{priority,jdbcType=INTEGER},
+      total_limit = #{totalLimit,jdbcType=SMALLINT},
+      daily_limit = #{dailyLimit,jdbcType=SMALLINT},
+      people_limit = #{peopleLimit,jdbcType=SMALLINT},
+      daily_people_limit = #{dailyPeopleLimit,jdbcType=SMALLINT}
+    where prom_id = #{promId,jdbcType=INTEGER}
+  </update>
+</mapper>

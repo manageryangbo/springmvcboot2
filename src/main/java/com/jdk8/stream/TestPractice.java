@@ -33,6 +33,10 @@ public class TestPractice {
         );
 
         List<Transaction> transactionList = transactions.stream().filter(transaction -> transaction.getYear() == 2011).sorted(Comparator.comparing(Transaction::getValue)).collect(Collectors.toList());
+        for (Transaction transaction:
+                transactionList) {
+            System.out.println( "==============" + transaction.getValue() );
+        }
         List<String> cityList = transactions.stream().map(transaction -> transaction.getTrader().getCity()).distinct().collect(Collectors.toList());
         List<Trader> traderNameList = transactions.stream().map(Transaction::getTrader).filter(trader -> trader.getCity() == "Cambridge").distinct().sorted(Comparator.comparing( Trader::getName )).collect(Collectors.toList());
         String  traderStr = transactions.stream().map(transaction -> transaction.getTrader().getName()).distinct().sorted().reduce("",(a,b)->a+b);
@@ -46,10 +50,13 @@ public class TestPractice {
         List<Goods> list2 = Arrays.asList(new Goods(100,"AA"),new Goods(100,"BB"),new Goods(100,"CC"),new Goods(200,"AA"),new Goods(200,"DD"),new Goods(300,"DD"),new Goods(300,"FF"),new Goods(300,"GG"),new Goods(300,"JJ"));
         List<Goods> list3 = Arrays.asList(new Goods(100,"AAA"),new Goods(100,"BBB"),new Goods(100,"CCC"),new Goods(200,"AAA"),new Goods(200,"DDD"),new Goods(300,"DDD"),new Goods(300,"FFF"),new Goods(300,"GGG"),new Goods(300,"JJJ"));
 
+<<<<<<< HEAD
         Map<Integer, List<Goods>> groupMap = list1.stream().collect(Collectors.groupingBy(Goods::getPrice));
         groupMap.forEach((key,goodsList)->{
             System.out.println( key );
             goodsList.forEach( (goods)-> System.out.println( goods.getPrice()+ "=>"+goods.getName()+";") );
         });
+=======
+>>>>>>> development
     }
 }

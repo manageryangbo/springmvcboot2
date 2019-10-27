@@ -15,6 +15,7 @@ public class UserServiceImpl implements UserService{
     /* (non-Javadoc)
      * @see dynamic.proxy.UserService#add()
      */
+    @Override
     public void add() {
         System.out.println("--------------------add---------------");
     }

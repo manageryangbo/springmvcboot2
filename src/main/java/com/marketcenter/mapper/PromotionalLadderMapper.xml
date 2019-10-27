@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.marketcenter.dao.PromotionalLadderDao" >
+  <resultMap id="BaseResultMap" type="com.marketcenter.dbo.PromotionalLadder" >
+    <id column="prom_ladder_id" property="promLadderId" jdbcType="INTEGER" />
+    <result column="prom_id" property="promId" jdbcType="INTEGER" />
+    <result column="ladder_full" property="ladderFull" jdbcType="NUMERIC" />
+    <result column="coupon_id" property="couponId" jdbcType="INTEGER" />
+    <result column="minus_type" property="minusType" jdbcType="SMALLINT" />
+    <result column="minus_sale" property="minusSale" jdbcType="NUMERIC" />
+    <result column="minus_num" property="minusNum" jdbcType="INTEGER" />
+    <result column="minus_ladder_full" property="minusLadderFull" jdbcType="INTEGER" />
+    <result column="discount" property="discount" jdbcType="NUMERIC" />
+    <result column="each_piece_money" property="eachPieceMoney" jdbcType="NUMERIC" />
+    <result column="the_pieces_discount" property="thePiecesDiscount" jdbcType="NUMERIC" />
+    <result column="minus_money" property="minusMoney" jdbcType="NUMERIC" />
+    <result column="change_buy_limit" property="changeBuyLimit" jdbcType="SMALLINT" />
+    <result column="goods_code" property="goodsCode" jdbcType="VARCHAR" />
+    <result column="change_buy_prices" property="changeBuyPrices" jdbcType="NUMERIC" />
+    <result column="change_buy_total" property="changeBuyTotal" jdbcType="SMALLINT" />
+    <result column="order_limit_person" property="orderLimitPerson" jdbcType="SMALLINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    prom_ladder_id, prom_id, ladder_full, coupon_id, minus_type, minus_sale, minus_num, 
+    minus_ladder_full, discount, each_piece_money, the_pieces_discount, minus_money, 
+    change_buy_limit, goods_code, change_buy_prices, change_buy_total, order_limit_person
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_prom_ladder
+    where prom_ladder_id = #{promLadderId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_prom_ladder
+    where prom_ladder_id = #{promLadderId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.marketcenter.dbo.PromotionalLadder" >
+    insert into t_prom_ladder (prom_ladder_id, prom_id, ladder_full, 
+      coupon_id, minus_type, minus_sale, 
+      minus_num, minus_ladder_full, discount, 
+      each_piece_money, the_pieces_discount, minus_money, 
+      change_buy_limit, goods_code, change_buy_prices, 
+      change_buy_total, order_limit_person)
+    values (#{promLadderId,jdbcType=INTEGER}, #{promId,jdbcType=INTEGER}, #{ladderFull,jdbcType=NUMERIC}, 
+      #{couponId,jdbcType=INTEGER}, #{minusType,jdbcType=SMALLINT}, #{minusSale,jdbcType=NUMERIC}, 
+      #{minusNum,jdbcType=INTEGER}, #{minusLadderFull,jdbcType=INTEGER}, #{discount,jdbcType=NUMERIC}, 
+      #{eachPieceMoney,jdbcType=NUMERIC}, #{thePiecesDiscount,jdbcType=NUMERIC}, #{minusMoney,jdbcType=NUMERIC}, 
+      #{changeBuyLimit,jdbcType=SMALLINT}, #{goodsCode,jdbcType=VARCHAR}, #{changeBuyPrices,jdbcType=NUMERIC}, 
+      #{changeBuyTotal,jdbcType=SMALLINT}, #{orderLimitPerson,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.marketcenter.dbo.PromotionalLadder" >
+    insert into t_prom_ladder
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="promLadderId != null" >
+        prom_ladder_id,
+      </if>
+      <if test="promId != null" >
+        prom_id,
+      </if>
+      <if test="ladderFull != null" >
+        ladder_full,
+      </if>
+      <if test="couponId != null" >
+        coupon_id,
+      </if>
+      <if test="minusType != null" >
+        minus_type,
+      </if>
+      <if test="minusSale != null" >
+        minus_sale,
+      </if>
+      <if test="minusNum != null" >
+        minus_num,
+      </if>
+      <if test="minusLadderFull != null" >
+        minus_ladder_full,
+      </if>
+      <if test="discount != null" >
+        discount,
+      </if>
+      <if test="eachPieceMoney != null" >
+        each_piece_money,
+      </if>
+      <if test="thePiecesDiscount != null" >
+        the_pieces_discount,
+      </if>
+      <if test="minusMoney != null" >
+        minus_money,
+      </if>
+      <if test="changeBuyLimit != null" >
+        change_buy_limit,
+      </if>
+      <if test="goodsCode != null" >
+        goods_code,
+      </if>
+      <if test="changeBuyPrices != null" >
+        change_buy_prices,
+      </if>
+      <if test="changeBuyTotal != null" >
+        change_buy_total,
+      </if>
+      <if test="orderLimitPerson != null" >
+        order_limit_person,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="promLadderId != null" >
+        #{promLadderId,jdbcType=INTEGER},
+      </if>
+      <if test="promId != null" >
+        #{promId,jdbcType=INTEGER},
+      </if>
+      <if test="ladderFull != null" >
+        #{ladderFull,jdbcType=NUMERIC},
+      </if>
+      <if test="couponId != null" >
+        #{couponId,jdbcType=INTEGER},
+      </if>
+      <if test="minusType != null" >
+        #{minusType,jdbcType=SMALLINT},
+      </if>
+      <if test="minusSale != null" >
+        #{minusSale,jdbcType=NUMERIC},
+      </if>
+      <if test="minusNum != null" >
+        #{minusNum,jdbcType=INTEGER},
+      </if>
+      <if test="minusLadderFull != null" >
+        #{minusLadderFull,jdbcType=INTEGER},
+      </if>
+      <if test="discount != null" >
+        #{discount,jdbcType=NUMERIC},
+      </if>
+      <if test="eachPieceMoney != null" >
+        #{eachPieceMoney,jdbcType=NUMERIC},
+      </if>
+      <if test="thePiecesDiscount != null" >
+        #{thePiecesDiscount,jdbcType=NUMERIC},
+      </if>
+      <if test="minusMoney != null" >
+        #{minusMoney,jdbcType=NUMERIC},
+      </if>
+      <if test="changeBuyLimit != null" >
+        #{changeBuyLimit,jdbcType=SMALLINT},
+      </if>
+      <if test="goodsCode != null" >
+        #{goodsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="changeBuyPrices != null" >
+        #{changeBuyPrices,jdbcType=NUMERIC},
+      </if>
+      <if test="changeBuyTotal != null" >
+        #{changeBuyTotal,jdbcType=SMALLINT},
+      </if>
+      <if test="orderLimitPerson != null" >
+        #{orderLimitPerson,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.marketcenter.dbo.PromotionalLadder" >
+    update t_prom_ladder
+    <set >
+      <if test="promId != null" >
+        prom_id = #{promId,jdbcType=INTEGER},
+      </if>
+      <if test="ladderFull != null" >
+        ladder_full = #{ladderFull,jdbcType=NUMERIC},
+      </if>
+      <if test="couponId != null" >
+        coupon_id = #{couponId,jdbcType=INTEGER},
+      </if>
+      <if test="minusType != null" >
+        minus_type = #{minusType,jdbcType=SMALLINT},
+      </if>
+      <if test="minusSale != null" >
+        minus_sale = #{minusSale,jdbcType=NUMERIC},
+      </if>
+      <if test="minusNum != null" >
+        minus_num = #{minusNum,jdbcType=INTEGER},
+      </if>
+      <if test="minusLadderFull != null" >
+        minus_ladder_full = #{minusLadderFull,jdbcType=INTEGER},
+      </if>
+      <if test="discount != null" >
+        discount = #{discount,jdbcType=NUMERIC},
+      </if>
+      <if test="eachPieceMoney != null" >
+        each_piece_money = #{eachPieceMoney,jdbcType=NUMERIC},
+      </if>
+      <if test="thePiecesDiscount != null" >
+        the_pieces_discount = #{thePiecesDiscount,jdbcType=NUMERIC},
+      </if>
+      <if test="minusMoney != null" >
+        minus_money = #{minusMoney,jdbcType=NUMERIC},
+      </if>
+      <if test="changeBuyLimit != null" >
+        change_buy_limit = #{changeBuyLimit,jdbcType=SMALLINT},
+      </if>
+      <if test="goodsCode != null" >
+        goods_code = #{goodsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="changeBuyPrices != null" >
+        change_buy_prices = #{changeBuyPrices,jdbcType=NUMERIC},
+      </if>
+      <if test="changeBuyTotal != null" >
+        change_buy_total = #{changeBuyTotal,jdbcType=SMALLINT},
+      </if>
+      <if test="orderLimitPerson != null" >
+        order_limit_person = #{orderLimitPerson,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where prom_ladder_id = #{promLadderId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.marketcenter.dbo.PromotionalLadder" >
+    update t_prom_ladder
+    set prom_id = #{promId,jdbcType=INTEGER},
+      ladder_full = #{ladderFull,jdbcType=NUMERIC},
+      coupon_id = #{couponId,jdbcType=INTEGER},
+      minus_type = #{minusType,jdbcType=SMALLINT},
+      minus_sale = #{minusSale,jdbcType=NUMERIC},
+      minus_num = #{minusNum,jdbcType=INTEGER},
+      minus_ladder_full = #{minusLadderFull,jdbcType=INTEGER},
+      discount = #{discount,jdbcType=NUMERIC},
+      each_piece_money = #{eachPieceMoney,jdbcType=NUMERIC},
+      the_pieces_discount = #{thePiecesDiscount,jdbcType=NUMERIC},
+      minus_money = #{minusMoney,jdbcType=NUMERIC},
+      change_buy_limit = #{changeBuyLimit,jdbcType=SMALLINT},
+      goods_code = #{goodsCode,jdbcType=VARCHAR},
+      change_buy_prices = #{changeBuyPrices,jdbcType=NUMERIC},
+      change_buy_total = #{changeBuyTotal,jdbcType=SMALLINT},
+      order_limit_person = #{orderLimitPerson,jdbcType=SMALLINT}
+    where prom_ladder_id = #{promLadderId,jdbcType=INTEGER}
+  </update>
+</mapper>

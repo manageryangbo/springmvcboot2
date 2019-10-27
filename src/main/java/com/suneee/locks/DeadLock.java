@@ -8,7 +8,7 @@
  * <author>          <time>          <version>          <desc>
  * 作者姓名          修改时间          版本号            描述
  */
-package com.suneee.threads;
+package com.suneee.locks;
 
 
 /**
@@ -36,6 +36,7 @@ public class DeadLock implements Runnable {
                 synchronized (o2) {
                     System.out.println("1");
                 }
+                System.out.println( "flag == 1 执行结束"  );
             }
         }
         if (flag == 0) {
@@ -48,6 +49,7 @@ public class DeadLock implements Runnable {
                 synchronized (o1) {
                     System.out.println("0");
                 }
+                System.out.println( "flag == 0 执行结束"  );
             }
         }
     }

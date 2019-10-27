@@ -8,7 +8,7 @@
  * <author>          <time>          <version>          <desc>
  * 作者姓名          修改时间          版本号            描述
  */
-package com.suneee.redis;
+package com.utils.redisson;
 
 
 import redis.clients.jedis.Jedis;
@@ -19,6 +19,7 @@ import java.util.Set;
 
 public class Test {
     public static void main(String[] args) {
+
         //连接本地的 Redis 服务
         Jedis jedis = new Jedis("localhost");
         System.out.println("连接成功");

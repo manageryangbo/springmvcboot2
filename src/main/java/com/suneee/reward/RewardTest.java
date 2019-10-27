@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 public class RewardTest {
     public static void main(String[] args) {
         ruanTimeTest();
+        System.out.println("update version reset");
     }
 
     public static void ruanTimeTest(){

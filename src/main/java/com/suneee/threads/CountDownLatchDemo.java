@@ -3,7 +3,9 @@
  * FileName: CountDownLatchDemo
  * Author:   martin
  * Date:     2018/8/30 15:08
- * Description: 实现所有线程等待某个事件发生才会执行
+ * Description:
+ *              CountDownLatch 【共享锁】
+ *              实现所有线程等待某个事件发生才会执行
  *              mainThread.join(aThread); 执行后面的操作
  * History:
  * <author>          <time>          <version>          <desc>
@@ -16,24 +18,24 @@ import java.util.concurrent.ForkJoinTask;
 
 public class CountDownLatchDemo {
     /**
-     * 模拟爸爸去饭店
+     * 模拟爸爸去公司
      */
-    public static void fatherToRes() {
+    public static void fatherToCompany() {
         System.out.println("爸爸步行去公司。");
     }
 
     /**
-     * 模拟我去饭店
+     * 模拟妈妈挤公交去商场
      */
-    public static void motherToRes() {
+    public static void motherToShopping() {
         System.out.println("妈妈挤公交去商场。");
     }
 
     /**
-     * 模拟妈妈去饭店
+     * 模拟我乘地铁回家
      */
-    public static void meToRes() {
-        System.out.println("我乘地铁去医院。");
+    public static void meToHome() {
+        System.out.println("我乘地铁回家。");
     }
 
     /**
@@ -62,8 +64,8 @@ public class CountDownLatchDemo {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                fatherToRes();
-            };
+                fatherToCompany();
+            }
         }.start();
         new Thread() {
             public void run() {
@@ -73,8 +75,8 @@ public class CountDownLatchDemo {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                motherToRes();
-            };
+                motherToShopping();
+            }
         }.start();
         new Thread() {
             public void run() {
@@ -83,8 +85,8 @@ public class CountDownLatchDemo {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                meToRes();
-            };
+                meToHome();
+            }
         }.start();
         new Thread() {
             public void run() {
@@ -97,7 +99,7 @@ public class CountDownLatchDemo {
                     e.printStackTrace();
                 }
                 latch.countDown();
-            };
+            }
         }.start();
 
         new Thread() {
@@ -111,9 +113,8 @@ public class CountDownLatchDemo {
                     e.printStackTrace();
                 }
                 latch.countDown();
-            };
+            }
         }.start();
-//        latch.countDown();
         System.out.println("=======结束========");
     }
 }
