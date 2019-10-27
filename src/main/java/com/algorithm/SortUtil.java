@@ -79,7 +79,7 @@ public class SortUtil {
             array[i] = temp ;
             changeCount ++ ;
             System.out.println(  Arrays.toString( array ) );  // 逆势打印效果
-            System.out.println("===========");
+            System.out.println("===========devlopemntt_marketcenter=revert之前");
         }
     }
 
