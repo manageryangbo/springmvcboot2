@@ -41,7 +41,7 @@ public class SortTest {
         SortUtil.insertSortAsc( ints4 );
         System.out.println( "3-最终结果:" + Arrays.toString(ints4));
         System.out.println( "交换次数:"+SortUtil.changeCount );
-
+        System.out.println("devlopemnt_marketcenter  revert之前main");
 
     }
 }
