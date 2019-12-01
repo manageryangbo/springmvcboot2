@@ -1,6 +1,8 @@
 package com.suneee.yangbo;
 
+import com.imageutil.UpdateImage;
 import com.utils.cache.redis.RedisHelper;
+import net.sourceforge.tess4j.TesseractException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -25,15 +27,19 @@ public class YangboApplication {
 
 	private final static  String preSearchkeyword = "preSearchkeyword_"; // 需统计关键词的key前缀
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws TesseractException {
 		SpringApplication.run(YangboApplication.class, args);
+		String initPath = "/tmp/test2.pdf";
+		UpdateImage.transferWenzi(initPath);
 	}
 
 	@RequestMapping("/")
-	public String hello(){
-		ApplicationContext  applicationContext= new ClassPathXmlApplicationContext();
-		applicationContext.getBean("com.abcd");
-		updateLastRedisSearchKeyword(485003,"常用酒店");
+	public String hello() throws TesseractException {
+//		ApplicationContext  applicationContext= new ClassPathXmlApplicationContext();
+//		applicationContext.getBean("com.abcd");
+//		updateLastRedisSearchKeyword(485003,"常用酒店");
+//		UpdateImage updateImage = new UpdateImage();
+//		updateImage.transferWenzi("D:\\color.png");
 		return "hello yangbo05527 world";
 	}
 
