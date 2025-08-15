@@ -16,10 +16,20 @@ import java.util.Date;
 public class Student  implements Serializable ,   Cloneable{
 
     private Integer sid ;
+
+    private String sname ;
     private Integer age;
     private Integer allscore;
     private Integer deleted;
     private Date date ;
+
+    public String getSname() {
+        return sname;
+    }
+
+    public void setSname(String sname) {
+        this.sname = sname;
+    }
 
     @Override
     protected Object clone() throws CloneNotSupportedException {
