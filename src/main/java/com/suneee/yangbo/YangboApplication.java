@@ -34,6 +34,7 @@ public class YangboApplication {
 		ApplicationContext  applicationContext= new ClassPathXmlApplicationContext();
 		applicationContext.getBean("com.abcd");
 		updateLastRedisSearchKeyword(485003,"常用酒店");
+		System.out.println("=============================");
 		return "hello yangbo05527 world";
 	}
 
